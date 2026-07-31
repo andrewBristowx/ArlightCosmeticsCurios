@@ -1,0 +1,12 @@
+PRUEBAS ARLIGHTCOSMETICSCURIOS 1.15.0
+
+1. Instalar el mismo JAR en servidor y cliente; retirar 1.14.1 y reiniciar completamente.
+2. Equipar el T-Rex y quedarse quieto girando cámara y cuerpo durante 20 segundos.
+3. Confirmar que la mascota permanece en su posición del mundo y no orbita al jugador.
+4. Caminar junto a muros, esquinas, escaleras, vallas y puertas.
+5. Confirmar que el cuerpo coincide con la caja física y no aparece al otro lado del bloque.
+6. Dejarla detrás de una pared estando cerca: debe esperar, no teletransportarse.
+7. Alejarse más de 24 bloques: debe reaparecer una sola vez en suelo seguro.
+8. Revisar T-Rex, axolote, zorro, abeja y allay por sus distintas proporciones.
+9. Abrir el ropero y confirmar que la previsualización de mascotas sigue funcionando.
+10. Verificar pijamas y ojos reales del T-Rex para detectar regresiones.

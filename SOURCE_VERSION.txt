@@ -1,1 +1,1 @@
-ArlightCosmeticsCurios 1.14.1 SAFE-PHYSICS-AND-RESCUE
+ArlightCosmeticsCurios 1.15.0 TRUE-ENTITY-COMPANIONS

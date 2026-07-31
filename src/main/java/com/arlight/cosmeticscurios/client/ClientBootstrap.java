@@ -14,7 +14,7 @@ public final class ClientBootstrap {
     }
 
     private static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(CosmeticEntities.COMPANION.get(), CompanionMarkerRenderer::new);
+        event.registerEntityRenderer(CosmeticEntities.COMPANION.get(), CompanionEntityRenderer::new);
     }
     private static void setup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {

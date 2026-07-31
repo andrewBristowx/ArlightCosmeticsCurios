@@ -104,7 +104,7 @@ public final class PetRenderController {
                 .stream().findFirst().orElse(null);
     }
 
-    private static Motion motion(int id) {
+    public static Motion motion(int id) {
         return switch (id) {
             case CompanionEntity.MOTION_LOOK -> Motion.LOOK;
             case CompanionEntity.MOTION_SIT -> Motion.SIT;

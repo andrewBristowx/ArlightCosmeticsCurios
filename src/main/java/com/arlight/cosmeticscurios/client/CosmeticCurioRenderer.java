@@ -45,10 +45,11 @@ public final class CosmeticCurioRenderer implements ICurioRenderer {
         if (model == null) return;
 
         boolean wardrobePreview = WardrobePreviewController.isPreviewing(definition.itemId());
+        // En el mundo, una mascota se dibuja exclusivamente en su entidad física.
+        // Curios conserva esta ruta sólo para el maniquí aislado del ropero.
+        if (definition.companion() && !wardrobePreview) return;
         PetRenderController.Transform petTransform = definition.companion()
-                ? (wardrobePreview
-                    ? PetRenderController.preview(definition.modelId())
-                    : PetRenderController.update(player, definition.modelId(), partialTicks))
+                ? PetRenderController.preview(definition.modelId())
                 : new PetRenderController.Transform(0, 0, 0, 0, 1.0F, PetRenderController.Motion.IDLE, false);
         if (definition.companion() && petTransform.appearanceScale() <= 0.01F) return;
         ProfessionalCosmeticAnimations.apply(model, player, partialTicks, limbSwing,

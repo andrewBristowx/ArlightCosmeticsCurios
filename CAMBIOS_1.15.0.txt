@@ -1,0 +1,10 @@
+ArlightCosmeticsCurios 1.15.0 - TRUE ENTITY COMPANIONS
+
+- La mascota visible ahora se renderiza directamente sobre su entidad física.
+- Girar la cámara o el cuerpo del jugador ya no desplaza ni hace orbitar la mascota.
+- Curios deja de dibujar mascotas en el mundo; conserva únicamente la previsualización del ropero.
+- Los pivotes históricos de cada modelo se centran sobre su caja física real.
+- Las cajas de colisión se amplían para cubrir hocicos, colas y cuerpos largos.
+- Un atasco cercano nunca provoca teletransporte y estar quieto reinicia ese contador.
+- El rescate duro pasa de 20 a 24 bloques y exige movimiento reciente para rescates por ruta.
+- Conserva la cara corregida del T-Rex, los pijamas y todo el catálogo de 1.14.1.

@@ -15,7 +15,10 @@ public final class CosmeticEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<CompanionEntity>> COMPANION =
             ENTITIES.register("companion", () -> EntityType.Builder
                     .of(CompanionEntity::new, MobCategory.MISC)
-                    .sized(0.54F, 0.78F)
+                    // La navegación usa las dimensiones registradas del tipo. Se registra
+                    // el máximo real y cada modelo reduce después su AABB; así ningún pet
+                    // calcula rutas por huecos donde su cuerpo visual no cabe.
+                    .sized(1.46F, 1.18F)
                     .noSummon()
                     .noSave()
                     .clientTrackingRange(8)

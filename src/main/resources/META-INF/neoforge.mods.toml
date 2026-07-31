@@ -7,7 +7,7 @@ modId="arlightcosmeticscurios"
 version = "${version}"
 displayName="Arlight Cosmetics Curios"
 authors="Arlight"
-description="Owner-bound Curios cosmetics with safe server-controlled companion physics, stable pajama skin coverage and custom models."
+description="Owner-bound Curios cosmetics with true entity-rendered companions, stable pajama skin coverage and custom models."
 displayTest="MATCH_VERSION"
 
 [[dependencies.arlightcosmeticscurios]]

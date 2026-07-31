@@ -8,7 +8,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -51,7 +50,8 @@ public final class CompanionEntity extends PathfinderMob {
 
     private static final double START_FOLLOWING_SQ = 10.24D;
     private static final double STOP_FOLLOWING_SQ = 5.29D;
-    private static final double HARD_RESCUE_DISTANCE_SQ = 400.0D;
+    private static final double HARD_RESCUE_DISTANCE_SQ = 576.0D;
+    private static final double STUCK_RESCUE_MIN_DISTANCE_SQ = 196.0D;
     private static final int REPATH_INTERVAL_TICKS = 10;
     private static final int PROGRESS_SAMPLE_TICKS = 10;
     private static final int STUCK_RESCUE_TICKS = 160;
@@ -66,6 +66,7 @@ public final class CompanionEntity extends PathfinderMob {
     private int repathTicks;
     private int rescueCooldownTicks;
     private int hiddenRetryTicks;
+    private int ownerMovementGraceTicks;
     private boolean following;
     private boolean routeRequested;
     private boolean pendingRescue;
@@ -173,7 +174,7 @@ public final class CompanionEntity extends PathfinderMob {
         if (!onGround() && getDeltaMovement().y > 0.015D) setMotion(MOTION_JUMP);
         if (isInWater()) setMotion(MOTION_SWIM);
 
-        sampleProgress(owner, targetDistanceSq);
+        sampleProgress(owner, targetDistanceSq, distanceSq);
     }
 
     private ServerPlayer resolveOwner() {
@@ -186,13 +187,17 @@ public final class CompanionEntity extends PathfinderMob {
 
     private void updateOwnerDirection(ServerPlayer owner) {
         Vec3 current = owner.position();
-        if (lastOwnerPosition == null) {
-            float yaw = owner.getYRot() * Mth.DEG_TO_RAD;
-            followDirection = new Vec3(-Mth.sin(yaw), 0.0D, Mth.cos(yaw));
-        } else {
+        if (lastOwnerPosition != null) {
             Vec3 movement = current.subtract(lastOwnerPosition);
             Vec3 horizontal = new Vec3(movement.x, 0.0D, movement.z);
-            if (horizontal.lengthSqr() > 0.0025D) followDirection = horizontal.normalize();
+            if (horizontal.lengthSqr() > 0.0025D) {
+                // La formación depende exclusivamente del desplazamiento real. Mirar o
+                // girar la cámara jamás cambia el punto de seguimiento de la mascota.
+                followDirection = horizontal.normalize();
+                ownerMovementGraceTicks = 80;
+            } else if (ownerMovementGraceTicks > 0) {
+                ownerMovementGraceTicks--;
+            }
         }
         lastOwnerPosition = current;
     }
@@ -206,6 +211,11 @@ public final class CompanionEntity extends PathfinderMob {
     }
 
     public boolean placeSafelyNear(ServerPlayer owner, String reason) {
+        if (lastOwnerPosition == null) {
+            double yaw = Math.toRadians(owner.getYRot());
+            followDirection = new Vec3(-Math.sin(yaw), 0.0D, Math.cos(yaw));
+            lastOwnerPosition = owner.position();
+        }
         applyPhysicalBounds();
         Vec3 target = followTarget(owner);
         int[] verticalChecks = {0, 1, -1, 2, -2, 3, -3, 4, -4};
@@ -262,9 +272,14 @@ public final class CompanionEntity extends PathfinderMob {
                 getX() + halfWidth, getY() + profile.height(), getZ() + halfWidth));
     }
 
-    private void sampleProgress(ServerPlayer owner, double targetDistanceSq) {
+    private void sampleProgress(ServerPlayer owner, double targetDistanceSq, double ownerDistanceSq) {
         if (tickCount % PROGRESS_SAMPLE_TICKS != 0) return;
-        if (!following || targetDistanceSq <= START_FOLLOWING_SQ) {
+        // No existe rescate por atasco mientras el dueño esté quieto o la mascota
+        // continúe cerca. Puede esperar al otro lado de una pared sin aparecer de
+        // golpe junto al jugador.
+        if (!following || targetDistanceSq <= START_FOLLOWING_SQ
+                || ownerMovementGraceTicks <= 0
+                || ownerDistanceSq < STUCK_RESCUE_MIN_DISTANCE_SQ) {
             resetProgressTracking();
             return;
         }
