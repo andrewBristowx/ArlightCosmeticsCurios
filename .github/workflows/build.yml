@@ -50,7 +50,7 @@ jobs:
       - name: Subir JAR compilado
         uses: actions/upload-artifact@v4
         with:
-          name: ArlightCosmeticsCurios-1.12.1-JAR
+          name: ArlightCosmeticsCurios-1.13.0-JAR
           path: dist/*.jar
           if-no-files-found: error
           retention-days: 30
