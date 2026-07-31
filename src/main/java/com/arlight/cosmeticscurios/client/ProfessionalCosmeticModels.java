@@ -1938,13 +1938,41 @@ public final class ProfessionalCosmeticModels {
                         6.0F, 4.65F, 6.0F, 0.07F),
                 ProfessionalCosmeticModel.Box.of(
                         0, 64, -3.35F, -0.55F, -6.25F,
-                        6.7F, 2.5F, 3.1F, 0.05F),
+                        6.7F, 2.5F, 3.1F, 0.05F)
+        );
+        // Ojos grandes y ligeramente salientes. Antes eran dos cubos de 0.72
+        // dentro del hueso de la cabeza y quedaban perdidos sobre el hocico.
+        builder.bone(
+                CosmeticAnchor.ROOT, "trex_eye_left", "trex_head",
+                -2.05F, -1.05F, -6.42F,
+                0.0F, 0.0F, 0.0F,
                 ProfessionalCosmeticModel.Box.of(
-                        112, 64, -2.62F, -1.45F, -6.55F,
-                        0.72F, 0.72F, 0.36F, 0.01F),
+                        112, 64, -0.62F, -0.62F, -0.22F,
+                        1.24F, 1.24F, 0.44F, 0.015F)
+        );
+        builder.bone(
+                CosmeticAnchor.ROOT, "trex_eye_right", "trex_head",
+                2.05F, -1.05F, -6.42F,
+                0.0F, 0.0F, 0.0F,
                 ProfessionalCosmeticModel.Box.of(
-                        112, 64, 1.90F, -1.45F, -6.55F,
-                        0.72F, 0.72F, 0.36F, 0.01F)
+                        112, 64, -0.62F, -0.62F, -0.22F,
+                        1.24F, 1.24F, 0.44F, 0.015F)
+        );
+        builder.bone(
+                CosmeticAnchor.ROOT, "trex_eye_glint_left", "trex_head",
+                -2.26F, -1.30F, -6.69F,
+                0.0F, 0.0F, 0.0F,
+                ProfessionalCosmeticModel.Box.of(
+                        64, 64, -0.16F, -0.16F, -0.08F,
+                        0.32F, 0.32F, 0.16F, 0.005F)
+        );
+        builder.bone(
+                CosmeticAnchor.ROOT, "trex_eye_glint_right", "trex_head",
+                1.84F, -1.30F, -6.69F,
+                0.0F, 0.0F, 0.0F,
+                ProfessionalCosmeticModel.Box.of(
+                        64, 64, -0.16F, -0.16F, -0.08F,
+                        0.32F, 0.32F, 0.16F, 0.005F)
         );
         builder.bone(
                 CosmeticAnchor.ROOT, "trex_jaw", "trex_head",
