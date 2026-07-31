@@ -3,7 +3,7 @@ plugins {
     id 'net.neoforged.gradle.userdev' version '7.1.38'
 }
 
-version = "1.13.0"
+version = "1.13.1"
 group = 'com.arlight.cosmeticscurios'
 base { archivesName = 'ArlightCosmeticsCurios' }
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)

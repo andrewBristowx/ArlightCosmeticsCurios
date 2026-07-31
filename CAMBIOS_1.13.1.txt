@@ -1,0 +1,8 @@
+ArlightCosmeticsCurios 1.13.1 - PAJAMA SKIN COVERAGE SYNC
+
+- Corrige la skin atravesando torso y brazos del pijama durante la sincronizacion.
+- Cualquier pieza activa de un set declara inmediatamente la cobertura completa.
+- Funciona igual en el maniqui del ropero y en el mundo.
+- La cara del jugador se conserva visible dentro de la capucha.
+- Los pijamas siguen siendo cosmeticos Curios sin defensa ni ranuras de armadura.
+- El listener de cobertura queda registrado de forma declarativa solo en cliente.

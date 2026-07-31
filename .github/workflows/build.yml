@@ -31,6 +31,14 @@ jobs:
       - name: Configurar Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      - name: Verificar fuente 1.13.1
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'version = "1.13.1"' build.gradle
+          grep -q '^ArlightCosmeticsCurios 1.13.1 ' BUILD_VERSION.txt
+          grep -Fq 'version = "${version}"' src/main/resources/META-INF/neoforge.mods.toml
+
       - name: Compilar con Gradle
         shell: bash
         run: |
@@ -45,12 +53,14 @@ jobs:
           mkdir -p dist
           find build/libs -maxdepth 1 -type f -name '*.jar' ! -name '*-sources.jar' ! -name '*-javadoc.jar' -exec cp {} dist/ \;
           test -n "$(find dist -maxdepth 1 -type f -name '*.jar' -print -quit)"
+          unzip -p dist/ArlightCosmeticsCurios-1.13.1.jar META-INF/neoforge.mods.toml | grep -Eq 'version *= *"1.13.1"'
+          unzip -l dist/ArlightCosmeticsCurios-1.13.1.jar | grep -q 'PajamaRenderVisibility.class'
           ls -lh dist
 
       - name: Subir JAR compilado
         uses: actions/upload-artifact@v4
         with:
-          name: ArlightCosmeticsCurios-1.13.0-JAR
+          name: ArlightCosmeticsCurios-1.13.1-JAR
           path: dist/*.jar
           if-no-files-found: error
           retention-days: 30
