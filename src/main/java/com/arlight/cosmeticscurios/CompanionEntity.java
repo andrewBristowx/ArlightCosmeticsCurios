@@ -14,11 +14,9 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -107,7 +105,7 @@ public final class CompanionEntity extends PathfinderMob {
         entityData.set(OWNER, Optional.ofNullable(owner));
         entityData.set(MODEL, modelId == null ? "" : modelId);
         physicsProfile = CompanionPhysicsProfile.forModel(modelId);
-        refreshDimensions();
+        applyPhysicalBounds();
     }
 
     public UUID ownerId() {
@@ -123,14 +121,10 @@ public final class CompanionEntity extends PathfinderMob {
     }
 
     @Override
-    public EntityDimensions getDimensions(Pose pose) {
-        CompanionPhysicsProfile profile = physicsProfile;
-        return (profile == null ? CompanionPhysicsProfile.forModel("") : profile).dimensions();
-    }
-
-    @Override
     public void tick() {
+        applyPhysicalBounds();
         super.tick();
+        applyPhysicalBounds();
         clearFire();
         if (level().isClientSide) return;
 
@@ -212,6 +206,7 @@ public final class CompanionEntity extends PathfinderMob {
     }
 
     public boolean placeSafelyNear(ServerPlayer owner, String reason) {
+        applyPhysicalBounds();
         Vec3 target = followTarget(owner);
         int[] verticalChecks = {0, 1, -1, 2, -2, 3, -3, 4, -4};
         double[][] horizontalChecks = {
@@ -229,6 +224,7 @@ public final class CompanionEntity extends PathfinderMob {
                 getNavigation().stop();
                 setDeltaMovement(Vec3.ZERO);
                 teleportTo(x, y, z);
+                applyPhysicalBounds();
                 setYRot(owner.getYRot());
                 setYHeadRot(owner.getYRot());
                 setInvisible(false);
@@ -255,6 +251,15 @@ public final class CompanionEntity extends PathfinderMob {
         return level().noCollision(this, moved)
                 && level().getFluidState(feet).isEmpty()
                 && level().getFluidState(top).isEmpty();
+    }
+
+    private void applyPhysicalBounds() {
+        CompanionPhysicsProfile profile = physicsProfile;
+        if (profile == null) profile = CompanionPhysicsProfile.forModel("");
+        double halfWidth = profile.width() * 0.5D;
+        setBoundingBox(new AABB(
+                getX() - halfWidth, getY(), getZ() - halfWidth,
+                getX() + halfWidth, getY() + profile.height(), getZ() + halfWidth));
     }
 
     private void sampleProgress(ServerPlayer owner, double targetDistanceSq) {
@@ -369,7 +374,7 @@ public final class CompanionEntity extends PathfinderMob {
         if (tag.hasUUID("Owner")) entityData.set(OWNER, Optional.of(tag.getUUID("Owner")));
         entityData.set(MODEL, tag.getString("Model"));
         physicsProfile = CompanionPhysicsProfile.forModel(modelId());
-        refreshDimensions();
+        applyPhysicalBounds();
     }
 
     @Override

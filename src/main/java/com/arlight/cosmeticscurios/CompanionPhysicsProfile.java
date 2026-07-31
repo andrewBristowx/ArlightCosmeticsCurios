@@ -1,7 +1,5 @@
 package com.arlight.cosmeticscurios;
 
-import net.minecraft.world.entity.EntityDimensions;
-
 /** Per-model block collision dimensions for companion entities. */
 public record CompanionPhysicsProfile(float width, float height) {
     private static final CompanionPhysicsProfile DEFAULT = new CompanionPhysicsProfile(0.66F, 0.80F);
@@ -23,9 +21,5 @@ public record CompanionPhysicsProfile(float width, float height) {
             case "mobchibi_skeleton" -> new CompanionPhysicsProfile(0.68F, 0.94F);
             default -> DEFAULT;
         };
-    }
-
-    public EntityDimensions dimensions() {
-        return EntityDimensions.scalable(width, height);
     }
 }
