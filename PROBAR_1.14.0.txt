@@ -1,0 +1,14 @@
+PRUEBAS ARLIGHTCOSMETICSCURIOS 1.14.0
+
+1. Sustituir 1.13.1 por 1.14.0 tanto en servidor como en todos los clientes.
+2. Reiniciar completamente; no usar /reload y no dejar dos versiones del JAR.
+3. Equipar cada mascota desde /ropero y confirmar que aparece una sola copia.
+4. Caminar, correr, subir escaleras, saltar desniveles y rodear paredes.
+5. Confirmar que a menos de 3 bloques se detiene y que entre 3 y 10-12 bloques sigue al dueño.
+6. Alejarse, teletransportarse y cambiar de mundo; debe reaparecer cerca sin quedar lejos ni cargar chunks.
+7. Golpear, usar objetos sobre ella, empujarla, aplicar pociones y hacerla pasar por placas/trampas.
+   Ninguna acción debe dañarla, seleccionarla, moverla ni activar mecanismos.
+8. Entrar en espectador y desequiparla: la entidad debe desaparecer.
+9. Probar al menos dos jugadores con mascotas diferentes y verificar que cada una sigue sólo a su dueño.
+10. Revisar el Mini T-Rex de frente y de lado: ojos negros en la cara; puntos verdes en el hocico como adornos.
+11. Volver a probar ambos pijamas y el maniquí del ropero para confirmar que la skin no atraviesa el conjunto.

@@ -1,1 +1,1 @@
-ArlightCosmeticsCurios 1.13.1 PAJAMA-SKIN-COVERAGE-SYNC
+ArlightCosmeticsCurios 1.15.0 TRUE-ENTITY-COMPANIONS

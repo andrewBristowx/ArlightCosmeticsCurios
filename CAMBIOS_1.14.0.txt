@@ -1,0 +1,11 @@
+ArlightCosmeticsCurios 1.14.0 - SERVER ENTITY PETS + T-REX FACE
+
+- Las mascotas equipadas ahora tienen una entidad NeoForge real controlada por el servidor.
+- Conservan gravedad, colisión con bloques y navegación; ya no calculan su suelo sólo en el cliente.
+- No pueden recibir daño, ser seleccionadas, empujadas, afectar placas o soltar objetos/experiencia.
+- No exploran ni atacan: se detienen cerca del dueño, lo siguen y se recuperan con teletransporte seguro.
+- Se descartan al desequiparlas, entrar en espectador o cambiar de mundo; nunca mantienen chunks cargados.
+- El modelo visual sigue renderizándose una sola vez con los cosméticos y animaciones existentes.
+- Los ojos negros del Mini T-Rex ahora están sobre su cara real, detrás del hocico.
+- Los dos puntos verdes del extremo del hocico se conservan como adornos emisivos.
+- Conserva completa la corrección de cobertura de skins de pijamas incluida en 1.13.1.
