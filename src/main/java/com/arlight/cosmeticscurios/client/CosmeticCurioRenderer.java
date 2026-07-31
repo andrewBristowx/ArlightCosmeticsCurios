@@ -50,6 +50,7 @@ public final class CosmeticCurioRenderer implements ICurioRenderer {
                     ? PetRenderController.preview(definition.modelId())
                     : PetRenderController.update(player, definition.modelId(), partialTicks))
                 : new PetRenderController.Transform(0, 0, 0, 0, 1.0F, PetRenderController.Motion.IDLE, false);
+        if (definition.companion() && petTransform.appearanceScale() <= 0.01F) return;
         ProfessionalCosmeticAnimations.apply(model, player, partialTicks, limbSwing,
                 limbSwingAmount, ageInTicks, petTransform.motion(), simplified);
 

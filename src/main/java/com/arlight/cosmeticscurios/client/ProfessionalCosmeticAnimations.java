@@ -2,14 +2,14 @@ package com.arlight.cosmeticscurios.client;
 
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.LivingEntity;
 
 /** Animaciones secundarias independientes de los 20 TPS del servidor. */
 public final class ProfessionalCosmeticAnimations {
     private ProfessionalCosmeticAnimations() { }
 
     public static void apply(ProfessionalCosmeticModel model,
-                             Player player,
+                             LivingEntity player,
                              float partialTick,
                              float limbSwing,
                              float limbSwingAmount,

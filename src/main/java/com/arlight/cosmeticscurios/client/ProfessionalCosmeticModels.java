@@ -1940,26 +1940,26 @@ public final class ProfessionalCosmeticModels {
                         0, 64, -3.35F, -0.55F, -6.25F,
                         6.7F, 2.5F, 3.1F, 0.05F)
         );
-        // Ojos grandes y ligeramente salientes. Antes eran dos cubos de 0.72
-        // dentro del hueso de la cabeza y quedaban perdidos sobre el hocico.
+        // Ojos reales sobre la cara, detrás del hocico. Los dos puntos verdes
+        // del extremo se conservan abajo como adornos y ya no cumplen esta función.
         builder.bone(
                 CosmeticAnchor.ROOT, "trex_eye_left", "trex_head",
-                -2.05F, -1.05F, -6.42F,
+                -2.12F, -1.18F, -4.02F,
                 0.0F, 0.0F, 0.0F,
                 ProfessionalCosmeticModel.Box.of(
-                        112, 64, -0.62F, -0.62F, -0.22F,
-                        1.24F, 1.24F, 0.44F, 0.015F)
+                        112, 64, -0.68F, -0.68F, -0.24F,
+                        1.36F, 1.36F, 0.48F, 0.015F)
         );
         builder.bone(
                 CosmeticAnchor.ROOT, "trex_eye_right", "trex_head",
-                2.05F, -1.05F, -6.42F,
+                2.12F, -1.18F, -4.02F,
                 0.0F, 0.0F, 0.0F,
                 ProfessionalCosmeticModel.Box.of(
-                        112, 64, -0.62F, -0.62F, -0.22F,
-                        1.24F, 1.24F, 0.44F, 0.015F)
+                        112, 64, -0.68F, -0.68F, -0.24F,
+                        1.36F, 1.36F, 0.48F, 0.015F)
         );
         builder.bone(
-                CosmeticAnchor.ROOT, "trex_eye_glint_left", "trex_head",
+                CosmeticAnchor.ROOT, "trex_snout_gem_left", "trex_head",
                 -2.26F, -1.30F, -6.69F,
                 0.0F, 0.0F, 0.0F,
                 ProfessionalCosmeticModel.Box.of(
@@ -1967,7 +1967,7 @@ public final class ProfessionalCosmeticModels {
                         0.32F, 0.32F, 0.16F, 0.005F)
         );
         builder.bone(
-                CosmeticAnchor.ROOT, "trex_eye_glint_right", "trex_head",
+                CosmeticAnchor.ROOT, "trex_snout_gem_right", "trex_head",
                 1.84F, -1.30F, -6.69F,
                 0.0F, 0.0F, 0.0F,
                 ProfessionalCosmeticModel.Box.of(

@@ -10,7 +10,10 @@ public final class ArlightCosmeticsCurios {
 
     public ArlightCosmeticsCurios(IEventBus modBus) {
         CosmeticItems.ITEMS.register(modBus);
+        CosmeticEntities.ENTITIES.register(modBus);
+        modBus.addListener(CosmeticEntities::createAttributes);
         NeoForge.EVENT_BUS.register(OwnershipEvents.class);
         NeoForge.EVENT_BUS.register(CosmeticCommands.class);
+        NeoForge.EVENT_BUS.register(CompanionManager.class);
     }
 }
