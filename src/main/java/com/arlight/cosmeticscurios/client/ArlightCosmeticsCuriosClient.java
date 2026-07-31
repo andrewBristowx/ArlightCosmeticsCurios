@@ -4,7 +4,6 @@ import com.arlight.cosmeticscurios.ArlightCosmeticsCurios;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.common.NeoForge;
 
 /**
  * Punto de entrada exclusivo del cliente físico.
@@ -14,6 +13,5 @@ import net.neoforged.neoforge.common.NeoForge;
 public final class ArlightCosmeticsCuriosClient {
     public ArlightCosmeticsCuriosClient(IEventBus modBus) {
         ClientBootstrap.init(modBus);
-        NeoForge.EVENT_BUS.register(PajamaRenderVisibility.class);
     }
 }

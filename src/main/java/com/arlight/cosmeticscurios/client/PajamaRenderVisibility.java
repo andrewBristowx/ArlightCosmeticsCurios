@@ -6,8 +6,10 @@ import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.world.item.ItemStack;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderPlayerEvent;
 import top.theillusivec4.curios.api.CuriosApi;
 
@@ -19,6 +21,10 @@ import java.util.Deque;
  * El cosmético continúa siendo Curios y no modifica skin, inventario, defensa ni
  * armadura del servidor. La cara se conserva visible dentro de la capucha.
  */
+@EventBusSubscriber(
+        modid = com.arlight.cosmeticscurios.ArlightCosmeticsCurios.MOD_ID,
+        value = Dist.CLIENT
+)
 public final class PajamaRenderVisibility {
     private static final int HEAD = 1;
     private static final int CHEST = 1 << 1;
@@ -98,22 +104,46 @@ public final class PajamaRenderVisibility {
     private static int pajamaCoverage(AbstractClientPlayer player) {
         int[] coverage = {0};
         CuriosApi.getCuriosInventory(player).ifPresent(handler -> {
-            coverage[0] |= slotCoverage(handler.getStacksHandler("arlight_head")
-                    .map(slot -> slot.getStacks().getStackInSlot(0)).orElse(ItemStack.EMPTY), player);
-            coverage[0] |= slotCoverage(handler.getStacksHandler("arlight_chest")
-                    .map(slot -> slot.getStacks().getStackInSlot(0)).orElse(ItemStack.EMPTY), player);
-            coverage[0] |= slotCoverage(handler.getStacksHandler("arlight_legs")
-                    .map(slot -> slot.getStacks().getStackInSlot(0)).orElse(ItemStack.EMPTY), player);
-            coverage[0] |= slotCoverage(handler.getStacksHandler("arlight_feet")
-                    .map(slot -> slot.getStacks().getStackInSlot(0)).orElse(ItemStack.EMPTY), player);
+            java.util.Set<String> activeSets = new java.util.LinkedHashSet<>();
+            for (String slotId : new String[]{
+                    "arlight_head", "arlight_chest", "arlight_legs", "arlight_feet"
+            }) {
+                ItemStack stack = handler.getStacksHandler(slotId)
+                        .map(slot -> slot.getStacks().getStackInSlot(0))
+                        .orElse(ItemStack.EMPTY);
+                CosmeticItemCatalog.Definition definition = pajama(stack, player);
+                if (definition == null) continue;
+                coverage[0] |= definitionCoverage(definition);
+                if (!definition.setId().isBlank()) activeSets.add(definition.setId());
+            }
+
+            // El ropero y el servidor equipan los pijamas como conjuntos. Curios
+            // sincroniza sus ranuras por separado, así que durante uno o varios
+            // fotogramas puede llegar primero HEAD o FEET. Antes se ocultaba sólo
+            // esa parte de la skin y torso/brazos atravesaban el modelo. Una pieza
+            // de un set ahora declara la cobertura completa del conjunto desde el
+            // primer fotograma, sin tocar inventario ni convertirlo en armadura.
+            if (!activeSets.isEmpty()) {
+                for (CosmeticItemCatalog.Definition definition : CosmeticItemCatalog.all()) {
+                    if (activeSets.contains(definition.setId())
+                            && "pajamas".equals(definition.category())) {
+                        coverage[0] |= definitionCoverage(definition);
+                    }
+                }
+            }
         });
         return coverage[0];
     }
 
-    private static int slotCoverage(ItemStack stack, AbstractClientPlayer player) {
-        if (stack.isEmpty() || !CosmeticOwnership.canUse(stack, player)) return 0;
+    private static CosmeticItemCatalog.Definition pajama(ItemStack stack,
+                                                          AbstractClientPlayer player) {
+        if (stack.isEmpty() || !CosmeticOwnership.canUse(stack, player)) return null;
         CosmeticItemCatalog.Definition definition = CosmeticItemCatalog.byItem(stack.getItem());
-        if (definition == null || !"pajamas".equals(definition.category())) return 0;
+        if (definition == null || !"pajamas".equals(definition.category())) return null;
+        return definition;
+    }
+
+    private static int definitionCoverage(CosmeticItemCatalog.Definition definition) {
         return switch (definition.slotId()) {
             case "arlight_head" -> HEAD;
             case "arlight_chest" -> CHEST;

@@ -1,0 +1,10 @@
+PRUEBAS ARLIGHTCOSMETICSCURIOS 1.13.1
+
+1. Instalar la misma version en servidor y cliente, junto a Curios 9.5.1+.
+2. Abrir /ropero y pasar por una pieza HEAD, CHEST, LEGS y FEET de cada pijama.
+3. Confirmar que torso, brazos y piernas de la skin no atraviesan el conjunto.
+4. Confirmar que la cara sigue visible dentro de la capucha.
+5. Equipar el conjunto y repetir de frente, espalda y ambos lados.
+6. Probar modelos Steve y Alex: quieto, caminar, correr, agacharse, nadar y montar.
+7. Probar con armadura y elitros; el pijama no debe otorgar defensa.
+8. Quitar el conjunto y confirmar que toda la skin vuelve a mostrarse.
