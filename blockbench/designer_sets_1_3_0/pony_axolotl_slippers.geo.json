@@ -1,0 +1,165 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.arlight.pony_axolotl_slippers",
+        "texture_width": 128,
+        "texture_height": 128,
+        "visible_bounds_width": 3.5,
+        "visible_bounds_height": 3.5,
+        "visible_bounds_offset": [
+          0,
+          1,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "left_slipper",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": []
+        },
+        {
+          "name": "left_gill_left",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "parent": "left_slipper",
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                2,
+                2
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "left_gill_right",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "parent": "left_slipper",
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                2,
+                2
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "right_slipper",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "parent": "left_slipper",
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                2,
+                2
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "right_gill_left",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "parent": "left_slipper",
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                2,
+                2
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "right_gill_right",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "parent": "left_slipper",
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                2,
+                2
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

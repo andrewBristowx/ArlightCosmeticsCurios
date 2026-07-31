@@ -1,0 +1,15 @@
+{
+  "version": "1.11.0",
+  "base": "1.10.1",
+  "java_braces": "ok",
+  "json_resources": "ok",
+  "png_resources": 196,
+  "full_build": "blocked_services.gradle.org_dns",
+  "syntax_scan": "no_syntax_patterns_detected",
+  "notes": [
+    "13 perfiles de mascota",
+    "11 modelos chibi reconstruidos o ampliados",
+    "texturas prioritarias pulidas",
+    "anclajes terrestres y flotantes separados"
+  ]
+}

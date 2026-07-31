@@ -1,0 +1,15 @@
+ArlightCosmeticsCurios 1.10.0 — PETS & PAJAMAS OVERHAUL
+
+- Mascotas con posición suavizada, retraso visual, recolocación tras teletransporte y estados idle/walk/run/swim/fly.
+- Escala individual para Mini T-Rex y cada mob chibi.
+- LOD por distancia: animación completa cerca, simplificada a media distancia y ocultación lejos.
+- Ajuste automático de brazos slim/clásico.
+- Ocultación de capucha, torso, pantalón o pantuflas cuando una armadura real ocupa la misma zona.
+- Pijamas menos voluminosos, con puños, parche frontal, capuchas y pantuflas mejor ajustadas.
+- Texturas existentes pulidas con sombreado pixelado y emisivos más controlados.
+- Partículas configurables: full, reduced u off.
+- Configuración local en config/arlightcosmeticscurios-client.properties.
+
+- Se incluye gradle-wrapper.jar para que el proyecto pueda importarse y compilarse con el wrapper desde IntelliJ.
+- La caché visual de mascotas se separa por UUID, dimensión y modelo para evitar duplicados o estados heredados.
+- El conjunto cloud_bunny_pajama comparte metadatos coherentes con el plugin.

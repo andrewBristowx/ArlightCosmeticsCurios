@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "arlightcosmeticscurios:item/bingo_void_wings"
+  }
+}

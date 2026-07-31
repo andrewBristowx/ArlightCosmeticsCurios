@@ -1,0 +1,8 @@
+ArlightCosmeticsCurios 1.2.2 — CLIENT MOD ENTRYPOINT COMPILE FIX
+
+- Elimina la referencia obsoleta a net.neoforged.fml.DistExecutor.
+- Separa el arranque del cliente en ArlightCosmeticsCuriosClient.
+- Usa @Mod(value = MOD_ID, dist = Dist.CLIENT), compatible con NeoForge 1.21.1.
+- El servidor dedicado ya no referencia clases de renderizado del cliente durante el arranque común.
+- Conserva los 31 iconos personalizados y las 11 texturas de ranuras de Curios.
+- No compilado ni probado dentro del juego.

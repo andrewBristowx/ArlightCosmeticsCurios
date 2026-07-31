@@ -1,0 +1,10 @@
+{
+  "status": "static_validation_passed",
+  "version": "1.9.1",
+  "summary": [
+    "Geometría rehecha para bunny_ear_hood, dino_pajama_hat y axolotl_pajama_hat.",
+    "Texturas rehechas para prendas principales de dinosaurio y ajolote.",
+    "Texturas e iconos mejorados para varios minimobs/mascotas del ropero.",
+    "Build automático no ejecutado: entorno sin gradle-wrapper.jar / maven toolchain."
+  ]
+}

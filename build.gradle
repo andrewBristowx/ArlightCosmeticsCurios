@@ -1,0 +1,35 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.gradle.userdev' version '7.1.38'
+}
+
+version = "1.11.0"
+group = 'com.arlight.cosmeticscurios'
+base { archivesName = 'ArlightCosmeticsCurios' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories {
+    mavenCentral()
+    maven { name = 'Illusive Soulworks'; url = 'https://maven.theillusivec4.top/' }
+}
+
+dependencies {
+    implementation 'net.neoforged:neoforge:21.1.235'
+    compileOnly 'top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1:api'
+    runtimeOnly 'top.theillusivec4.curios:curios-neoforge:9.5.1+1.21.1'
+}
+
+runs {
+    configureEach {
+        systemProperty 'forge.logging.console.level', 'debug'
+        modSource sourceSets.main
+    }
+    client { client() }
+    server { server() }
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.withType(ProcessResources).configureEach {
+    inputs.property 'version', project.version
+    filesMatching('META-INF/neoforge.mods.toml') { expand version: project.version }
+}

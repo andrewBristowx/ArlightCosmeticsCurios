@@ -1,0 +1,9 @@
+PRUEBAS ARLIGHTCOSMETICSCURIOS 1.3.0
+
+1. Usar Minecraft/NeoForge 1.21.1, Java 21 y Curios 9.5.1+.
+2. Sustituir el mod anterior y conservar respaldos de inventarios.
+3. Reclamar pony_pastel_outfit: deben llegar adorno, pony orbital y pantuflas.
+4. Reclamar somita_night_outfit: deben llegar cola, órbita 6/7 y pantuflas.
+5. Equipar cada pieza en su nueva ranura indicada.
+6. Probar los seis mobchibi en arlight_companion, uno por vez.
+7. Verificar partículas a distancia y que no continúan al desequipar.

@@ -1,0 +1,28 @@
+{
+  "timestamp_utc": "2026-07-29T06:36:07.282225+00:00",
+  "compiled": false,
+  "in_game_tested": false,
+  "checks": {
+    "json_valid": true,
+    "yaml_valid": true,
+    "xml_valid": true,
+    "png_valid": true,
+    "java_delimiters_balanced": true,
+    "new_item_ids": 5,
+    "new_curios_slots": [
+      "arlight_hands",
+      "arlight_companion"
+    ],
+    "mini_trex_animation_states": [
+      "idle",
+      "walk",
+      "run"
+    ],
+    "owner_binding_preserved": true
+  },
+  "notes": [
+    "No se ejecutó Gradle, Maven ni javac.",
+    "El Mini T-Rex es un compañero cosmético renderizado, sin entidad, IA ni hitbox.",
+    "ArlightChatClient 3.7.0 sigue siendo compatible y no requiere cambios para esta colección."
+  ]
+}

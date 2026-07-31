@@ -1,0 +1,4 @@
+ArlightCosmeticsCurios 1.6.0
+- Cada pieza Pony0n/Somita se equipa individualmente.
+- Comando interno clearall limpia todas las ranuras.
+- Órbita 6/7 aumentada a 10.5 y movimiento más lento.

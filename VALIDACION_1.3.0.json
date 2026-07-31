@@ -1,0 +1,22 @@
+{
+  "project": "ArlightCosmeticsCurios",
+  "version": "1.3.0",
+  "status": "source_and_assets_validated",
+  "checks": {
+    "json_parsed": true,
+    "java_braces_balanced": true,
+    "java_syntax_scan": "passed; external NeoForge/Curios symbols unavailable",
+    "catalog_items": 37,
+    "registered_professional_models": 42,
+    "item_icons": 37,
+    "cosmetic_textures": 84,
+    "new_designer_models": 12,
+    "new_chibi_pets": 6,
+    "cross_references": "passed",
+    "blockbench_sources": "passed"
+  },
+  "compile": {
+    "performed": false,
+    "reason": "Gradle wrapper JAR/distribution and dependency cache are unavailable in this runtime."
+  }
+}

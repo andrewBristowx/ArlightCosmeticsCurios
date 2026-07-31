@@ -1,0 +1,8 @@
+ARLIGHTCOSMETICSCURIOS 1.3.0 — DESIGNER SETS + CHIBI PETS
+
+- Reutiliza ids históricos para conservar objetos y propietarios.
+- Pony0n: adorno ajolote con guiño, pony orbital con partículas y pantuflas ajolote.
+- Somita: cola vampírica, números 6/7 orbitales y pantuflas murciélago.
+- Seis mascotas chibi nuevas con animaciones independientes.
+- Ranuras corregidas: pony orbital y 6/7 usan AURA; cola Somita usa TAIL.
+- Texturas nuevas, pase emisivo y fuentes editables para Blockbench.

@@ -1,0 +1,8 @@
+PRUEBAS RECOMENDADAS
+
+1. Probar Mini T-Rex y todas las mascotas al caminar, correr, nadar, volar y teletransportarse.
+2. Revisar a 5, 20 y 45 bloques para validar LOD.
+3. Probar pijamas de dinosaurio y ajolote con modelo slim y clásico.
+4. Equipar casco/pechera/pantalones/botas reales y comprobar que solo se oculta la pieza cosmética coincidente.
+5. Cambiar particles=full/reduced/off en config/arlightcosmeticscurios-client.properties.
+6. Revisar tercera persona, guardarropa, podio y dos jugadores simultáneos.

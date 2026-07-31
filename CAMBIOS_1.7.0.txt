@@ -1,0 +1,4 @@
+ArlightCosmeticsCurios 1.7.0
+- Preview temporal en ropero.
+- Insignia 67 unida y legible.
+- Minimascotas con proporciones más vanilla.

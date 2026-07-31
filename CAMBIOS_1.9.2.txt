@@ -1,0 +1,5 @@
+ArlightCosmeticsCurios 1.9.2
+- Corrección de UV/texturas en minimascotas del ropero para que vuelvan a verse completas con la geometría real.
+- Repintado de las minimascotas afectadas con atlas 128x128 compatibles con sus modelos.
+- Ajuste de caras y detalles visibles en: T-Rex, Creeper, Enderman, Abejita, Ajolote, Slime, Warden, Gallinita, Zorrito, Ranita, Allay, Zombi y Esqueleto.
+- Mapas emisivos rehechos donde aplica para evitar ojos o detalles transparentes mal colocados.

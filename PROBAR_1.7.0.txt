@@ -1,0 +1,5 @@
+1. Usar junto con ArlightChatClient 4.3.0.
+2. Revisar preview temporal en /ropero.
+3. Verificar que al cerrar no se alteró Curios.
+4. El 67 debe permanecer unido y legible durante la órbita.
+5. Revisar las seis minimascotas remodeladas.

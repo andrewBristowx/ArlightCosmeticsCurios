@@ -1,0 +1,7 @@
+ARLIGHTCOSMETICSCURIOS 1.9.0 - PRUEBAS
+
+1. Instala esta misma versión en cliente y servidor.
+2. Prueba los pijamas de dinosaurio y ajolote por piezas.
+3. Comprueba las animaciones pequeñas de gorros, prendas, pantuflas y accesorios.
+4. Prueba las 12 minimascotas y revisa su silueta/textura desde varios ángulos.
+5. Verifica que los objetos internos de Curios no puedan sacarse manualmente.

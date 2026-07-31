@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "arlightcosmeticscurios:item/bunny_ear_hood"
+  }
+}

@@ -1,0 +1,1 @@
+Añade equip/unequip automático en Curios para que los modelos profesionales se rendericen y permanezcan bloqueados.

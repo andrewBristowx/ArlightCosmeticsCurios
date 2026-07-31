@@ -1,0 +1,13 @@
+PRUEBAS RECOMENDADAS — 1.1.0
+
+1. Compilar tú mismo con Java 21.
+2. Instalar el JAR en mods/ del servidor y de todos los clientes.
+3. Con ArlightCosmetics 1.6.0, dar permiso:
+   arlightcosmetics.pack.swansito
+4. Reclamar los cinco objetos desde /cosmeticos.
+5. Verificar ranuras arlight_hands y arlight_companion en Curios.
+6. Probar Mini T-Rex:
+   - quieto: respiración, cabeza y cola;
+   - caminando: paso alterno;
+   - corriendo: zancada rápida y mandíbula abierta.
+7. Guardar los objetos en un cofre y comprobar que otro jugador no pueda retirarlos.

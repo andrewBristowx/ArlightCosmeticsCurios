@@ -1,0 +1,11 @@
+ArlightCosmeticsCurios 1.11.0 — COMPANION MODEL OVERHAUL
+
+- Perfiles individuales de escala, altura, separación y preview para trece mascotas.
+- Mascotas terrestres y flotantes usan anclajes distintos.
+- Seguimiento más separado de la pierna y transición suave al correr, nadar o volar.
+- Modelos reconstruidos/pulidos para Creeper, Enderman, Abeja, Ajolote, Warden,
+  Gallinita, Zorrito, Ranita, Allay, Zombie y Esqueleto.
+- Huesos y animaciones nuevas para alas, antenas, colas, branquias, patas y cuernos.
+- Texturas y máscaras emisivas ajustadas individualmente.
+- Pijamas de dinosaurio, ajolote y conejita recoloreados como conjuntos coherentes.
+- La preview usa posiciones y escalas propias por criatura.

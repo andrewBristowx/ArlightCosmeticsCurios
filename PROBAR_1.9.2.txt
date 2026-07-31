@@ -1,0 +1,6 @@
+Pruebas sugeridas 1.9.2
+1. Abrir el ropero y revisar la pestaña PET con todas las minimascotas nuevas.
+2. Confirmar que ninguna mascota aparezca parcialmente invisible o con caras faltantes.
+3. Equipar cada mascota y rotar el maniquí para revisar frente, lados y parte trasera.
+4. Verificar que Allay, Enderman, Warden y Slime mantengan sus detalles/emitivos sin transparencias rotas.
+5. Entrar al mundo y comprobar que la mascota se vea bien tanto quieta como caminando.

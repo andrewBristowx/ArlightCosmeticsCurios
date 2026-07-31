@@ -1,0 +1,10 @@
+PRUEBA DE COMPILACIÓN — ARLIGHTCOSMETICSCURIOS 1.0.1
+
+1. Abre esta carpeta como proyecto Gradle en IntelliJ.
+2. Confirma que Gradle JVM sea Java 21.
+3. Pulsa Reload All Gradle Projects.
+4. Espera a que descargue NeoGradle desde maven.neoforged.net.
+5. Ejecuta Gradle > build > build.
+6. Si aparece otro error, envía la captura completa y la primera sección roja de la consola.
+
+Esta fuente no fue compilada por el asistente.

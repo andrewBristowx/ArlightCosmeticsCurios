@@ -1,0 +1,9 @@
+ArlightCosmeticsCurios 1.9.1
+- Capuchas rehechas para que se vean como gorritos y no tapen toda la cara.
+- Mejoras fuertes en las texturas del pijama dinosaurio y del pijama ajolote.
+- Mejora visual del cardigan luna/estrella.
+- Repintado y pulido de múltiples minimascotas del ropero.
+- Gallina con ojitos y pico mejor definidos.
+- Zorro con cara completa y mejor contraste.
+- Abejita con cuerpo mejor rematado y carita.
+- Ajustes de iconos de ítems para que el selector del ropero se vea mejor.

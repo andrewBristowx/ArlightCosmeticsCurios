@@ -1,0 +1,11 @@
+ArlightCosmeticsCurios 1.10.1 - REAL VISUAL PREVIEW FIX
+
+- El ropero aísla todas las ranuras antes de mostrar un cosmético.
+- Las piezas de pijama muestran el conjunto completo.
+- Las mascotas ya no se mezclan con la mascota equipada anteriormente.
+- Reposicionamiento de Mini Creeper, Mini Zombie y Mini Gallinita hacia el suelo.
+- Escalas individuales corregidas para mascotas pequeñas.
+- Geometría adicional para T-Rex, Gallinita y Zombie.
+- Texturas UV rehechas a mano para T-Rex, Creeper, Zombie, Gallinita y pijamas dinosaurio/ajolote.
+- Máscaras emisivas limitadas a detalles concretos.
+- Seguimiento lateral más estable y preview sin movimiento de carrera.

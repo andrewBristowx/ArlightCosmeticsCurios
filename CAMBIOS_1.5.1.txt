@@ -1,0 +1,6 @@
+ArlightCosmeticsCurios 1.5.1 - SOMITA ORBIT SPACING
+
+- Aumenta el radio de los números 6 y 7 de 5.2 a 7.8 unidades.
+- Separa verticalmente ambos números para evitar que tapen la cabeza.
+- Reduce la velocidad de la órbita de 64 a 38 grados por unidad de tiempo.
+- Mantiene partículas y animaciones existentes.

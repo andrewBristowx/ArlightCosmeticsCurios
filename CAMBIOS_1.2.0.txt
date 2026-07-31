@@ -1,0 +1,8 @@
+ArlightCosmeticsCurios 1.2.0 — CUSTOM ITEM ICONS + CURIOS SLOT FIX
+
+- Añade iconos pixel art propios a los 31 objetos cosméticos.
+- Elimina los iconos vanilla genéricos de armadura, estrellas y amatista.
+- Añade 11 texturas transparentes para los espacios personalizados de Curios.
+- Cada JSON de ranura usa el namespace arlightcosmeticscurios, evitando el tablero rosa/negro.
+- Mantiene la colección de Swansito, la protección por propietario y los renderizadores.
+- Fuente sin compilar.

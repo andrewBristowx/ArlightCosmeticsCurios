@@ -1,0 +1,20 @@
+ARLIGHTCOSMETICSCURIOS 1.9.2 — PAQUETE CORREGIDO
+Carpeta raíz: ArlightCosmeticsCurios-1.9.2-PET-UV-FIX
+build.gradle: version 1.9.2
+neoforge.mods.toml: version 1.9.2
+BUILD_VERSION.txt: 1.9.2
+
+SHA-256 de texturas corregidas:
+72da91c7e694c027a35542a209e90c413dc36883f1d22c42b0baa66294c62a42  /mnt/data/ArlightCosmeticsCurios-1.9.2-PET-UV-FIX/src/main/resources/assets/arlightcosmeticscurios/textures/cosmetics/swansito_mini_trex.png
+798e91861e20dbdf312e97cbe7f69a848ca890f33b1c7b9df5f8044749c37e06  /mnt/data/ArlightCosmeticsCurios-1.9.2-PET-UV-FIX/src/main/resources/assets/arlightcosmeticscurios/textures/cosmetics/mobchibi_creeper.png
+25c822a196397663a694b54282a64064f01c0e3cfe3849a59990b5f0291fae62  /mnt/data/ArlightCosmeticsCurios-1.9.2-PET-UV-FIX/src/main/resources/assets/arlightcosmeticscurios/textures/cosmetics/mobchibi_enderman.png
+79a00e545085cada36e35c24ca402cfc1fc8a6542a32410c27d53deaab9c5f6c  /mnt/data/ArlightCosmeticsCurios-1.9.2-PET-UV-FIX/src/main/resources/assets/arlightcosmeticscurios/textures/cosmetics/mobchibi_bee.png
+1d91cd485bc1cb21cf4ce78be41a20534f056cb5af8d6479ce2c3b15a768425a  /mnt/data/ArlightCosmeticsCurios-1.9.2-PET-UV-FIX/src/main/resources/assets/arlightcosmeticscurios/textures/cosmetics/mobchibi_axolotl.png
+25a445c8e37908abc15a81dfdab66a918c6b6dd3e9d531449c8f2145a28e62b1  /mnt/data/ArlightCosmeticsCurios-1.9.2-PET-UV-FIX/src/main/resources/assets/arlightcosmeticscurios/textures/cosmetics/mobchibi_slime.png
+a5723ebe1652391959d227569abb958213399b644e2176db750e4c3625f5009b  /mnt/data/ArlightCosmeticsCurios-1.9.2-PET-UV-FIX/src/main/resources/assets/arlightcosmeticscurios/textures/cosmetics/mobchibi_warden.png
+bf6738c90a5f0f47aa1ce42e135683bdf817ccfd3b4fbaa0f5509bd7dda78bf8  /mnt/data/ArlightCosmeticsCurios-1.9.2-PET-UV-FIX/src/main/resources/assets/arlightcosmeticscurios/textures/cosmetics/mobchibi_chicken.png
+e0b9e381af289a1dfe327df2374a910d5f05b8fda0518dbbe5053c95b6e6dab7  /mnt/data/ArlightCosmeticsCurios-1.9.2-PET-UV-FIX/src/main/resources/assets/arlightcosmeticscurios/textures/cosmetics/mobchibi_fox.png
+5d4ef4b21cffe97f20877232a4612054bcfc08188527cc18dffe177bf8c24dd6  /mnt/data/ArlightCosmeticsCurios-1.9.2-PET-UV-FIX/src/main/resources/assets/arlightcosmeticscurios/textures/cosmetics/mobchibi_frog.png
+a11eda6b70324e9acff1c9bdf395e724fabe0fece549eac02334b5b937f11107  /mnt/data/ArlightCosmeticsCurios-1.9.2-PET-UV-FIX/src/main/resources/assets/arlightcosmeticscurios/textures/cosmetics/mobchibi_allay.png
+5e2e8f965503886175a06246e969cc2ef7ea28f4e18256cad6a05fa22f77dda8  /mnt/data/ArlightCosmeticsCurios-1.9.2-PET-UV-FIX/src/main/resources/assets/arlightcosmeticscurios/textures/cosmetics/mobchibi_zombie.png
+ec496c4996be3a202bee6b9959bf1888824214bffb7ca6d7982353e31341a62a  /mnt/data/ArlightCosmeticsCurios-1.9.2-PET-UV-FIX/src/main/resources/assets/arlightcosmeticscurios/textures/cosmetics/mobchibi_skeleton.png

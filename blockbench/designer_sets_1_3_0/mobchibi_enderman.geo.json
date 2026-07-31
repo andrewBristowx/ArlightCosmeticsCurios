@@ -1,0 +1,192 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.arlight.mobchibi_enderman",
+        "texture_width": 128,
+        "texture_height": 128,
+        "visible_bounds_width": 3.5,
+        "visible_bounds_height": 3.5,
+        "visible_bounds_offset": [
+          0,
+          1,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "enderman_root",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": []
+        },
+        {
+          "name": "enderman_body",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "parent": "enderman_root",
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                2,
+                2
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "enderman_head",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "parent": "enderman_root",
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                2,
+                2
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "enderman_arm_left",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "parent": "enderman_root",
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                2,
+                2
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "enderman_arm_right",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "parent": "enderman_root",
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                2,
+                2
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "enderman_leg_left",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "parent": "enderman_root",
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                2,
+                2
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "name": "enderman_leg_right",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "parent": "enderman_root",
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                2,
+                2
+              ],
+              "uv": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

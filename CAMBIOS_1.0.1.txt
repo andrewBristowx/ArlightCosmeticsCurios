@@ -1,0 +1,9 @@
+ArlightCosmeticsCurios 1.0.1 — NEOGRADLE PLUGIN RESOLUTION FIX
+
+- Añade pluginManagement a settings.gradle.
+- Añade el repositorio oficial https://maven.neoforged.net/releases para resolver NeoGradle.
+- Mantiene net.neoforged.gradle.userdev 7.1.38, versión publicada oficialmente.
+- Añade Foojay Toolchain Resolver 1.0.0 como en el MDK oficial de NeoForge 1.21.1.
+- Alinea el Gradle Wrapper con Gradle 9.2.1, usado por el MDK oficial actual de NeoForge 1.21.1.
+- No cambia objetos, ranuras, protección de propietario, modelos ni texturas.
+- Fuente preparada sin ejecutar Gradle ni compilar.

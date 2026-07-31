@@ -1,0 +1,8 @@
+{
+  "size": 1,
+  "order": 25,
+  "icon": "arlightcosmeticscurios:slot/empty_arlight_tail",
+  "drop_rule": "ALWAYS_KEEP",
+  "render_toggle": true,
+  "use_native_gui": true
+}

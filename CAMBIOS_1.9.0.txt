@@ -1,0 +1,6 @@
+ArlightCosmeticsCurios 1.9.0
+- Dos pijamas completos por piezas: dinosaurio y ajolote.
+- Nuevos accesorios bonitos animados.
+- Cuatro rastros de partículas nuevos.
+- Seis minimascotas nuevas: gallina, zorro, rana, allay, zombi y esqueleto.
+- Modelos y texturas internas nuevas para todos los cosméticos.

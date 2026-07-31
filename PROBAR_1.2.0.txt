@@ -1,0 +1,6 @@
+PRUEBAS MANUALES DESPUÉS DE COMPILAR
+1. Abrir inventario y comprobar que ninguna ranura de Curios muestra rosa/negro.
+2. Cada ranura vacía debe mostrar su silueta tenue: cabeza, pecho, piernas, botas, espalda, cola, hombro, manos, compañero, aura y rastro.
+3. Revisar en inventario/JEI que los 31 objetos tengan icono propio.
+4. Equipar y retirar objetos para comprobar que el modelo 3D sigue funcionando.
+5. Probar en servidor y cliente con la misma versión 1.2.0.

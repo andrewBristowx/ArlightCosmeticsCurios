@@ -1,0 +1,7 @@
+ArlightCosmeticsCurios 1.2.2
+
+- Mini T-Rex desplazado más lejos del jugador y claramente detrás.
+- Separación lateral aumentada para evitar que atraviese las piernas.
+- Rotación ajustada para que siga mirando hacia la zona de movimiento.
+- Conserva idle, walk y run.
+- Sin compilación ni prueba de ejecución realizada.

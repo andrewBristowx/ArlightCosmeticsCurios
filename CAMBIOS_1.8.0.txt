@@ -1,0 +1,7 @@
+ArlightCosmeticsCurios 1.8.0 - MINI MOBS VANILLA TEXTURE OVERHAUL
+
+- Texturas internas rehechas para Creeper, Enderman, Abeja, Ajolote, Slime y Warden.
+- Paletas, franjas, ojos, pecho y rasgos más cercanos a Minecraft.
+- Iconos del ropero actualizados.
+- Creeper recibe boca frontal modelada.
+- Conserva modelos mini/chibi y el cosmético 67 de la versión anterior.

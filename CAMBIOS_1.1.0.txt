@@ -1,0 +1,12 @@
+ArlightCosmeticsCurios 1.1.0 — SWANSITO DINO COLLECTION
+
+- Añade cinco objetos cosméticos vinculados al propietario:
+  swansito_dino_tail, swansito_dino_hands, swansito_mini_trex,
+  swansito_meat_chase_aura y swansito_dino_steps.
+- Añade ranuras Curios arlight_hands y arlight_companion.
+- Mini T-Rex cosmético sin hitbox con estados visuales idle, walk y run.
+- Aura de dinosaurio persiguiendo una carnita.
+- Partículas jurásicas verdes y carmesí al caminar.
+- Modelos jerárquicos y fuentes editables estilo Blockbench/GeckoLib.
+- Mantiene protección por UUID y compatibilidad con los cosméticos anteriores.
+- FUENTE SOLAMENTE: no compilado ni probado dentro de Minecraft.

@@ -1,0 +1,66 @@
+{
+  "ok": true,
+  "errors": [],
+  "warnings": [
+    "Emisivo vacío intencional/sin brillo: mobchibi_fox_emissive.png",
+    "Emisivo vacío intencional/sin brillo: axolotl_pajama_feet_emissive.png",
+    "Emisivo vacío intencional/sin brillo: mobchibi_frog_emissive.png",
+    "Emisivo vacío intencional/sin brillo: mobchibi_zombie_emissive.png",
+    "Emisivo vacío intencional/sin brillo: dino_pajama_feet_emissive.png",
+    "Emisivo vacío intencional/sin brillo: mobchibi_bee_emissive.png",
+    "Emisivo vacío intencional/sin brillo: mobchibi_creeper_emissive.png",
+    "Emisivo vacío intencional/sin brillo: cloud_skirt_emissive.png",
+    "Emisivo vacío intencional/sin brillo: dino_pajama_legs_emissive.png",
+    "Emisivo vacío intencional/sin brillo: bunny_ear_hood_emissive.png",
+    "Emisivo vacío intencional/sin brillo: cloud_slippers_emissive.png",
+    "Emisivo vacío intencional/sin brillo: mobchibi_skeleton_emissive.png",
+    "Emisivo vacío intencional/sin brillo: axolotl_pajama_legs_emissive.png",
+    "Emisivo vacío intencional/sin brillo: mobchibi_chicken_emissive.png"
+  ],
+  "info": {
+    "png_count": 196,
+    "png_dimensions": {
+      "(16, 16)": 41,
+      "(32, 32)": 31,
+      "(128, 128)": 124
+    },
+    "plugin_cosmetics": 59,
+    "mod_items": 61,
+    "registered_models": 62,
+    "sets": {
+      "pony_pastel": [
+        "pony_pastel_chest",
+        "pony_pastel_legs",
+        "pony_pastel_feet",
+        "pony_pastel_steps"
+      ],
+      "somita_night": [
+        "somita_night_chest",
+        "somita_night_legs",
+        "somita_night_feet",
+        "somita_night_steps"
+      ],
+      "bingo_corrupted": [
+        "bingo_corrupted_outfit"
+      ],
+      "dino_pajama": [
+        "dino_pajama_hat",
+        "dino_pajama_chest",
+        "dino_pajama_legs",
+        "dino_pajama_feet"
+      ],
+      "axolotl_pajama": [
+        "axolotl_pajama_hat",
+        "axolotl_pajama_chest",
+        "axolotl_pajama_legs",
+        "axolotl_pajama_feet"
+      ],
+      "cloud_bunny_pajama": [
+        "bunny_ear_hood",
+        "moon_star_cardigan",
+        "cloud_skirt",
+        "cloud_slippers"
+      ]
+    }
+  }
+}

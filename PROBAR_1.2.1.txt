@@ -1,0 +1,6 @@
+1. Abrir el proyecto con Java 21.
+2. Recargar Gradle.
+3. Ejecutar Gradle > Tasks > build > build.
+4. Confirmar que ya no aparezca DistExecutor como símbolo inexistente.
+5. Probar el JAR en cliente y servidor con Curios 9.5.1+1.21.1.
+6. Verificar iconos de objetos, fondos de ranuras y renderizado de cosméticos.

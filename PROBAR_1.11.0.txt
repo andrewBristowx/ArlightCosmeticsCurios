@@ -1,0 +1,14 @@
+PRUEBAS ARLIGHTCOSMETICSCURIOS 1.11.0
+
+Revisar en el ropero y en tercera persona:
+- Mini T-Rex, Creeper, Enderman, Abejita, Ajolote, Warden, Gallinita,
+  Zorrito, Ranita, Allay, Zombie y Esqueleto.
+- Pijama dinosaurio, pijama ajolote y conjunto conejita.
+
+Comprobar:
+- una sola mascota visible;
+- separación lateral correcta;
+- mascotas flotantes a distinta altura;
+- preview centrada;
+- limpieza al cerrar el ropero, morir, cambiar de mundo y reconectar;
+- animaciones idle/caminar/correr y alas/colas sin atravesamientos graves.

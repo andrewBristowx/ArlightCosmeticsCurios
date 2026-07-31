@@ -1,0 +1,18 @@
+{
+  "entities": [
+    "minecraft:player"
+  ],
+  "slots": [
+    "arlight_head",
+    "arlight_chest",
+    "arlight_legs",
+    "arlight_feet",
+    "arlight_back",
+    "arlight_tail",
+    "arlight_shoulder",
+    "arlight_hands",
+    "arlight_companion",
+    "arlight_aura",
+    "arlight_trail"
+  ]
+}

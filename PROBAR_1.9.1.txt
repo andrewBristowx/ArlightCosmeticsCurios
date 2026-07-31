@@ -1,0 +1,8 @@
+ARLIGHTCOSMETICSCURIOS 1.9.1 - PRUEBAS
+
+1. Instala esta misma versión en cliente y servidor.
+2. Abre el ropero y revisa HEAD con capucha conejita, gorrito dinosaurio y gorrito ajolote.
+3. Confirma que el rostro ya no quede cubierto casi por completo.
+4. Revisa CHEST y LEGS del pijama dinosaurio y ajolote; deben verse con más detalle y menos planos.
+5. En PET revisa gallina, zorro, abeja, allay, zombi, esqueleto y rana; todos deben mostrar carita y mejor lectura visual.
+6. Comprueba también que los iconos del selector se vean más claros.

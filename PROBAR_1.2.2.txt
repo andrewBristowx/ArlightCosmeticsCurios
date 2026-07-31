@@ -1,0 +1,4 @@
+1. Equipar swansito_mini_trex en arlight_companion.
+2. Verificar quieto, caminando y corriendo en tercera persona.
+3. Confirmar que queda detrás y separado de las piernas.
+4. Confirmar que no atraviesa cola, alas ni mascota de hombro.

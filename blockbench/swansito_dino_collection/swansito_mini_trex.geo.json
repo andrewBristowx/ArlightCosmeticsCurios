@@ -1,0 +1,296 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.arlight.swansito_mini_trex",
+        "texture_width": 128,
+        "texture_height": 128,
+        "visible_bounds_width": 3.4,
+        "visible_bounds_height": 2.6,
+        "visible_bounds_offset": [
+          0,
+          1,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "trex_root",
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "trex_body",
+          "parent": "trex_root",
+          "pivot": [
+            0,
+            8,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                5,
+                -4
+              ],
+              "size": [
+                6,
+                5,
+                8
+              ],
+              "uv": [
+                0,
+                0
+              ],
+              "inflate": 0.08
+            }
+          ]
+        },
+        {
+          "name": "trex_neck",
+          "parent": "trex_body",
+          "pivot": [
+            0,
+            7,
+            -4
+          ],
+          "rotation": [
+            -10,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -2,
+                3,
+                -6
+              ],
+              "size": [
+                4,
+                5,
+                4
+              ],
+              "uv": [
+                32,
+                0
+              ],
+              "inflate": 0.06
+            }
+          ]
+        },
+        {
+          "name": "trex_head",
+          "parent": "trex_neck",
+          "pivot": [
+            0,
+            4,
+            -5
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                1,
+                -9
+              ],
+              "size": [
+                6,
+                5,
+                6
+              ],
+              "uv": [
+                64,
+                0
+              ],
+              "inflate": 0.07
+            },
+            {
+              "origin": [
+                -3.35,
+                3,
+                -12
+              ],
+              "size": [
+                6.7,
+                2.5,
+                3.1
+              ],
+              "uv": [
+                0,
+                64
+              ]
+            }
+          ]
+        },
+        {
+          "name": "trex_jaw",
+          "parent": "trex_head",
+          "pivot": [
+            0,
+            5,
+            -9
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                4,
+                -12
+              ],
+              "size": [
+                6,
+                1,
+                4
+              ],
+              "uv": [
+                32,
+                64
+              ]
+            }
+          ]
+        },
+        {
+          "name": "trex_leg_left",
+          "parent": "trex_body",
+          "pivot": [
+            -2,
+            10,
+            2
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                10,
+                1
+              ],
+              "size": [
+                2,
+                5,
+                3
+              ],
+              "uv": [
+                32,
+                32
+              ]
+            }
+          ]
+        },
+        {
+          "name": "trex_leg_right",
+          "parent": "trex_body",
+          "pivot": [
+            2,
+            10,
+            2
+          ],
+          "cubes": [
+            {
+              "origin": [
+                1,
+                10,
+                1
+              ],
+              "size": [
+                2,
+                5,
+                3
+              ],
+              "uv": [
+                32,
+                32
+              ]
+            }
+          ]
+        },
+        {
+          "name": "trex_tail_base",
+          "parent": "trex_body",
+          "pivot": [
+            0,
+            8,
+            4
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -2,
+                6,
+                4
+              ],
+              "size": [
+                4,
+                3,
+                6
+              ],
+              "uv": [
+                0,
+                96
+              ]
+            }
+          ]
+        },
+        {
+          "name": "trex_tail_mid",
+          "parent": "trex_tail_base",
+          "pivot": [
+            0,
+            7,
+            9
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -1.25,
+                6,
+                9
+              ],
+              "size": [
+                2.5,
+                2,
+                5
+              ],
+              "uv": [
+                32,
+                96
+              ]
+            }
+          ]
+        },
+        {
+          "name": "trex_tail_tip",
+          "parent": "trex_tail_mid",
+          "pivot": [
+            0,
+            7,
+            14
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -0.7,
+                6.5,
+                14
+              ],
+              "size": [
+                1.4,
+                1.1,
+                4
+              ],
+              "uv": [
+                64,
+                96
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

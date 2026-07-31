@@ -1,0 +1,18 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.arlight.somita_bat_slippers.idle": {
+      "loop": true,
+      "animation_length": 4.0,
+      "bones": {
+        "left_bat_slipper": {
+          "rotation": [
+            0,
+            "math.sin(query.anim_time*2.0)*4.0",
+            0
+          ]
+        }
+      }
+    }
+  }
+}
