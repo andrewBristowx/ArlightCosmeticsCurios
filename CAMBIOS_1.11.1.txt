@@ -1,0 +1,11 @@
+ArlightCosmeticsCurios 1.11.1 - TEXTURE ARMOR FIT FIX
+
+- Corrige ojos negros del Mini Creeper y oscurece su boca.
+- Añade ojos visibles, cola y patas pintadas a la Mini Gallinita.
+- Recupera ojos faltantes del Mini Zombie y cuencas del Mini Esqueleto.
+- Añade ojos visibles al Mini Zorrito y pupilas a la Mini Ranita.
+- Completa regiones UV transparentes usadas por los modelos.
+- Refuerza la separación tipo armadura sobre la skin del jugador.
+- Solapa torso, cintura, piernas y zapatillas para eliminar costuras de skin.
+- Elimina la franja frontal del pijama T-Rex que cruzaba la cara.
+- Mantiene una apertura limpia en la cara de las capuchas.

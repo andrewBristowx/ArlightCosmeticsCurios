@@ -76,7 +76,19 @@ public final class CosmeticCurioRenderer implements ICurioRenderer {
                     || definition.slotId().equals("arlight_legs")
                     || definition.slotId().equals("arlight_feet")
                     || definition.slotId().equals("arlight_head");
-            if (armorFit) poseStack.scale(1.012F, 1.012F, 1.012F);
+            if (armorFit) {
+                // Las prendas funcionan como una capa de armadura cosmética real.
+                // El margen por ranura evita que la skin atraviese capuchas, mangas,
+                // cintura, rodillas o zapatillas incluso con skins de segunda capa.
+                float armorScale = switch (definition.slotId()) {
+                    case "arlight_head" -> 1.026F;
+                    case "arlight_chest" -> 1.021F;
+                    case "arlight_legs" -> 1.020F;
+                    case "arlight_feet" -> 1.018F;
+                    default -> 1.012F;
+                };
+                poseStack.scale(armorScale, armorScale, armorScale);
+            }
             model.render(anchor, poseStack, buffers, light, armorFit);
             poseStack.popPose();
         }

@@ -1,1 +1,1 @@
-1.11.0
+ArlightCosmeticsCurios 1.11.1 TEXTURE-ARMOR-FIT-FIX

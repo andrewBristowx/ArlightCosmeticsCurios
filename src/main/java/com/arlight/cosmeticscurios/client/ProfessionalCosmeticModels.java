@@ -2111,16 +2111,17 @@ public final class ProfessionalCosmeticModels {
     private static ProfessionalCosmeticModel dinoPajamaHat() {
         ProfessionalCosmeticModel.Builder b = new ProfessionalCosmeticModel.Builder("dino_pajama_hat",128,128);
         b.bone(CosmeticAnchor.HEAD,"dino_hat_top",null,0,0,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(0,0,-4.35F,-8.55F,-4.35F,8.7F,2.15F,8.7F,0.11F));
+                ProfessionalCosmeticModel.Box.of(0,0,-4.35F,-8.55F,-4.35F,8.7F,2.15F,8.7F,0.22F));
         b.bone(CosmeticAnchor.HEAD,"dino_hat_left",null,0,0,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(0,24,-4.35F,-6.9F,-4.0F,0.92F,6.75F,8.0F,0.06F));
+                ProfessionalCosmeticModel.Box.of(0,24,-4.35F,-6.9F,-4.0F,0.92F,6.75F,8.0F,0.15F));
         b.bone(CosmeticAnchor.HEAD,"dino_hat_right",null,0,0,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(20,24,3.30F,-6.9F,-4.0F,0.92F,6.75F,8.0F,0.06F));
+                ProfessionalCosmeticModel.Box.of(20,24,3.30F,-6.9F,-4.0F,0.92F,6.75F,8.0F,0.15F));
         b.bone(CosmeticAnchor.HEAD,"dino_hat_back",null,0,0,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(40,24,-4.0F,-6.9F,3.25F,8.0F,6.75F,0.92F,0.06F));
-        b.bone(CosmeticAnchor.HEAD,"dino_hat_brow",null,0,0,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(60,24,-3.9F,-6.9F,-4.35F,7.8F,1.0F,1.05F,0.04F),
-                ProfessionalCosmeticModel.Box.of(64,0,-2.10F,-5.7F,-5.05F,4.2F,1.45F,0.95F,0.04F));
+                ProfessionalCosmeticModel.Box.of(40,24,-4.0F,-6.9F,3.25F,8.0F,6.75F,0.92F,0.15F));
+        b.bone(CosmeticAnchor.HEAD,"dino_hat_snout",null,0,0,0,0,0,0,
+                // Hocico elevado: deja la cara completamente libre y elimina la
+                // antigua franja verde que cruzaba los ojos del jugador.
+                ProfessionalCosmeticModel.Box.of(64,0,-2.10F,-6.35F,-5.05F,4.2F,1.15F,0.95F,0.07F));
         b.bone(CosmeticAnchor.HEAD,"dino_spike_one",null,0,0,0,0,0,0,
                 ProfessionalCosmeticModel.Box.of(96,0,-0.75F,-9.35F,-0.15F,1.5F,2.25F,0.9F,0.02F));
         b.bone(CosmeticAnchor.HEAD,"dino_spike_two",null,0,0,0,-10,0,0,
@@ -2135,13 +2136,13 @@ public final class ProfessionalCosmeticModels {
     private static ProfessionalCosmeticModel axolotlPajamaHat() {
         ProfessionalCosmeticModel.Builder b = new ProfessionalCosmeticModel.Builder("axolotl_pajama_hat",128,128);
         b.bone(CosmeticAnchor.HEAD,"axo_hat_top",null,0,0,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(0,0,-4.35F,-8.55F,-4.35F,8.7F,2.10F,8.7F,0.11F));
+                ProfessionalCosmeticModel.Box.of(0,0,-4.35F,-8.55F,-4.35F,8.7F,2.10F,8.7F,0.22F));
         b.bone(CosmeticAnchor.HEAD,"axo_hat_left",null,0,0,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(0,24,-4.35F,-6.9F,-4.0F,0.92F,6.75F,8.0F,0.06F));
+                ProfessionalCosmeticModel.Box.of(0,24,-4.35F,-6.9F,-4.0F,0.92F,6.75F,8.0F,0.15F));
         b.bone(CosmeticAnchor.HEAD,"axo_hat_right",null,0,0,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(20,24,3.30F,-6.9F,-4.0F,0.92F,6.75F,8.0F,0.06F));
+                ProfessionalCosmeticModel.Box.of(20,24,3.30F,-6.9F,-4.0F,0.92F,6.75F,8.0F,0.15F));
         b.bone(CosmeticAnchor.HEAD,"axo_hat_back",null,0,0,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(40,24,-4.0F,-6.9F,3.25F,8.0F,6.75F,0.92F,0.06F));
+                ProfessionalCosmeticModel.Box.of(40,24,-4.0F,-6.9F,3.25F,8.0F,6.75F,0.92F,0.15F));
         b.bone(CosmeticAnchor.HEAD,"axo_hat_brow",null,0,0,0,0,0,0,
                 ProfessionalCosmeticModel.Box.of(60,24,-3.9F,-6.9F,-4.35F,7.8F,1.0F,1.05F,0.04F),
                 ProfessionalCosmeticModel.Box.of(64,0,-2.25F,-5.3F,-4.95F,4.5F,1.25F,0.8F,0.03F));
@@ -2159,12 +2160,12 @@ public final class ProfessionalCosmeticModels {
     private static ProfessionalCosmeticModel pajamaChest(String id, boolean dino) {
         ProfessionalCosmeticModel.Builder b = new ProfessionalCosmeticModel.Builder(id,128,128);
         b.bone(CosmeticAnchor.BODY,"pajama_body",null,0,0,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(0,0,-4,-0.05F,-2,8,9.45F,4,0.44F),
+                ProfessionalCosmeticModel.Box.of(0,0,-4,-0.08F,-2,8,10.10F,4,0.56F),
                 ProfessionalCosmeticModel.Box.of(64,0,-2.5F,2.1F,-2.65F,5.0F,4.4F,0.65F,0.03F));
         b.bone(CosmeticAnchor.LEFT_ARM,"pajama_left_arm",null,0,0,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(32,0,-2,-2,-2,4,12,4,0.43F));
+                ProfessionalCosmeticModel.Box.of(32,0,-2,-2,-2,4,12.15F,4,0.54F));
         b.bone(CosmeticAnchor.RIGHT_ARM,"pajama_right_arm",null,0,0,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(48,0,-2,-2,-2,4,12,4,0.43F));
+                ProfessionalCosmeticModel.Box.of(48,0,-2,-2,-2,4,12.15F,4,0.54F));
         b.bone(CosmeticAnchor.BODY,"pajama_belly_patch","pajama_body",0,3.4F,-2.48F,0,0,0,
                 ProfessionalCosmeticModel.Box.of(64,0,-2.15F,-2.45F,-0.18F,4.3F,4.9F,0.36F,0.015F));
         b.bone(CosmeticAnchor.LEFT_ARM,"pajama_left_cuff","pajama_left_arm",0,8.8F,0,0,0,0,
@@ -2187,12 +2188,12 @@ public final class ProfessionalCosmeticModels {
 
     private static ProfessionalCosmeticModel pajamaLegs(String id, boolean dino) {
         ProfessionalCosmeticModel.Builder b = new ProfessionalCosmeticModel.Builder(id,128,128);
-        b.bone(CosmeticAnchor.BODY,"pajama_waist",null,0,9.0F,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(64,24,-4.15F,0,-2.15F,8.25F,3.1F,4.25F,0.045F));
+        b.bone(CosmeticAnchor.BODY,"pajama_waist",null,0,8.55F,0,0,0,0,
+                ProfessionalCosmeticModel.Box.of(64,24,-4.15F,0,-2.15F,8.25F,3.75F,4.25F,0.12F));
         b.bone(CosmeticAnchor.LEFT_LEG,"pajama_left_leg",null,0,0,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(0,24,-2,0,-2,4,8.25F,4,0.43F));
+                ProfessionalCosmeticModel.Box.of(0,24,-2,-0.10F,-2,4,9.45F,4,0.54F));
         b.bone(CosmeticAnchor.RIGHT_LEG,"pajama_right_leg",null,0,0,0,0,0,0,
-                ProfessionalCosmeticModel.Box.of(16,24,-2,0,-2,4,8.25F,4,0.43F));
+                ProfessionalCosmeticModel.Box.of(16,24,-2,-0.10F,-2,4,9.45F,4,0.54F));
         if (dino) {
             b.bone(CosmeticAnchor.BODY,"pajama_dino_tail","pajama_waist",0,1.4F,2.0F,8,0,0,
                     ProfessionalCosmeticModel.Box.of(96,0,-0.9F,-0.6F,-0.15F,1.8F,1.4F,5.2F,0.04F));
@@ -2214,8 +2215,8 @@ public final class ProfessionalCosmeticModels {
 
     private static void pajamaFoot(ProfessionalCosmeticModel.Builder b, CosmeticAnchor anchor,
                                    String side, int u, boolean dino) {
-        b.bone(anchor,side+"_pajama_slipper",null,0,9.05F,-0.35F,0,0,0,
-                ProfessionalCosmeticModel.Box.of(u,0,-2.075F,-0.15F,-3.05F,4.15F,3.0F,4.75F,0.06F),
+        b.bone(anchor,side+"_pajama_slipper",null,0,8.55F,-0.35F,0,0,0,
+                ProfessionalCosmeticModel.Box.of(u,0,-2.075F,-0.20F,-3.05F,4.15F,3.65F,4.75F,0.15F),
                 ProfessionalCosmeticModel.Box.of(96,0,-1.15F,0.55F,-3.53F,0.55F,0.55F,0.18F,0.01F),
                 ProfessionalCosmeticModel.Box.of(96,0,0.60F,0.55F,-3.53F,0.55F,0.55F,0.18F,0.01F));
         if (dino) {
@@ -2316,6 +2317,10 @@ public final class ProfessionalCosmeticModels {
                 ProfessionalCosmeticModel.Box.of(32, 0, -2.15F, -2.05F, -2.05F, 4.3F, 4.1F, 4.1F, 0.06F),
                 ProfessionalCosmeticModel.Box.of(64, 0, -0.85F, -0.05F, -2.70F, 1.7F, 0.90F, 1.35F, 0.03F),
                 ProfessionalCosmeticModel.Box.of(96, 0, -0.42F, 0.80F, -2.25F, 0.84F, 1.15F, 0.55F, 0.02F));
+        b.bone(CosmeticAnchor.ROOT, "chicken_eye_left", "chicken_head", -1.05F, -0.45F, -2.10F, 0, 0, 0,
+                ProfessionalCosmeticModel.Box.of(112, 64, -0.38F, -0.38F, -0.22F, 0.76F, 0.76F, 0.26F, 0.01F));
+        b.bone(CosmeticAnchor.ROOT, "chicken_eye_right", "chicken_head", 1.05F, -0.45F, -2.10F, 0, 0, 0,
+                ProfessionalCosmeticModel.Box.of(112, 64, -0.38F, -0.38F, -0.22F, 0.76F, 0.76F, 0.26F, 0.01F));
         b.bone(CosmeticAnchor.ROOT, "chicken_comb", "chicken_head", 0, -2.0F, 0, 0, 0, 0,
                 ProfessionalCosmeticModel.Box.of(96, 0, -0.55F, -1.55F, -0.55F, 1.1F, 1.65F, 1.1F, 0.03F));
         b.bone(CosmeticAnchor.ROOT, "chicken_wing_left", "chicken_body", -2.25F, -0.45F, 0, 0, 0, -12,
@@ -2346,6 +2351,10 @@ public final class ProfessionalCosmeticModels {
                 ProfessionalCosmeticModel.Box.of(32, 0, -2.75F, -2.35F, -2.15F, 5.5F, 4.7F, 4.3F, 0.07F),
                 ProfessionalCosmeticModel.Box.of(64, 0, -1.55F, -0.10F, -2.95F, 3.1F, 1.6F, 1.6F, 0.04F),
                 ProfessionalCosmeticModel.Box.of(96, 0, -0.38F, 0.45F, -3.20F, 0.76F, 0.60F, 0.35F, 0.01F));
+        b.bone(CosmeticAnchor.ROOT, "fox_eye_left", "fox_head", -1.15F, -0.55F, -2.18F, 0, 0, 0,
+                ProfessionalCosmeticModel.Box.of(112, 64, -0.34F, -0.34F, -0.22F, 0.68F, 0.68F, 0.26F, 0.01F));
+        b.bone(CosmeticAnchor.ROOT, "fox_eye_right", "fox_head", 1.15F, -0.55F, -2.18F, 0, 0, 0,
+                ProfessionalCosmeticModel.Box.of(112, 64, -0.34F, -0.34F, -0.22F, 0.68F, 0.68F, 0.26F, 0.01F));
         b.bone(CosmeticAnchor.ROOT, "fox_ear_left", "fox_head", -1.65F, -2.05F, 0, 0, 0, -8,
                 ProfessionalCosmeticModel.Box.of(96, 0, -0.80F, -2.15F, -0.58F, 1.6F, 2.25F, 1.16F, 0.03F));
         b.bone(CosmeticAnchor.ROOT, "fox_ear_right", "fox_head", 1.65F, -2.05F, 0, 0, 0, 8,
@@ -2374,6 +2383,10 @@ public final class ProfessionalCosmeticModels {
                 ProfessionalCosmeticModel.Box.of(32, 0, -0.85F, -0.85F, -0.85F, 1.7F, 1.7F, 1.7F, 0.04F));
         b.bone(CosmeticAnchor.ROOT, "frog_eye_right", "frog_body", 1.75F, -1.9F, -1.55F, 0, 0, 0,
                 ProfessionalCosmeticModel.Box.of(48, 0, -0.85F, -0.85F, -0.85F, 1.7F, 1.7F, 1.7F, 0.04F));
+        b.bone(CosmeticAnchor.ROOT, "frog_pupil_left", "frog_eye_left", 0, 0, -0.86F, 0, 0, 0,
+                ProfessionalCosmeticModel.Box.of(112, 64, -0.32F, -0.32F, -0.16F, 0.64F, 0.64F, 0.22F, 0.01F));
+        b.bone(CosmeticAnchor.ROOT, "frog_pupil_right", "frog_eye_right", 0, 0, -0.86F, 0, 0, 0,
+                ProfessionalCosmeticModel.Box.of(112, 64, -0.32F, -0.32F, -0.16F, 0.64F, 0.64F, 0.22F, 0.01F));
         b.bone(CosmeticAnchor.ROOT, "frog_arm_left", "frog_body", -2.2F, 1.0F, -1.65F, 12, 0, -18,
                 ProfessionalCosmeticModel.Box.of(96, 0, -1.35F, -0.28F, -0.45F, 1.45F, 0.56F, 1.0F, 0.02F));
         b.bone(CosmeticAnchor.ROOT, "frog_arm_right", "frog_body", 2.2F, 1.0F, -1.65F, 12, 0, 18,
