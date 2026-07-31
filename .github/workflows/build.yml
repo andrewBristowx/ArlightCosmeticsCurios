@@ -38,14 +38,11 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Importar actualización ArlightCosmeticsCurios 1.12.0
+      - name: Aplicar actualización ArlightCosmeticsCurios 1.12.0
         shell: bash
         run: |
           set -euo pipefail
-          FILE_ID='1sIHbQ7MaJ4cxPwhe5lSwAz27MxhUQ0OL'
-          URL="https://drive.usercontent.google.com/download?id=${FILE_ID}&export=download&confirm=t"
-          curl --location --fail --retry 4 --retry-all-errors --connect-timeout 20 "$URL" -o /tmp/overlay.zip
-          file /tmp/overlay.zip
+          base64 --decode .github/patches/curios-1.12.0/overlay.b64 > /tmp/overlay.zip
           unzip -t /tmp/overlay.zip
           unzip -oq /tmp/overlay.zip -d .
           rm -rf .github/patches/curios-1.12.0
