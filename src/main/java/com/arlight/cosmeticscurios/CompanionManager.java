@@ -50,7 +50,7 @@ public final class CompanionManager {
     private static CompanionEntity activeEntity(ServerPlayer player) {
         UUID entityId = ACTIVE.get(player.getUUID());
         if (entityId == null) return null;
-        if (player.level().getEntity(entityId) instanceof CompanionEntity companion
+        if (((ServerLevel) player.level()).getEntity(entityId) instanceof CompanionEntity companion
                 && companion.isAlive() && player.getUUID().equals(companion.ownerId())) {
             return companion;
         }

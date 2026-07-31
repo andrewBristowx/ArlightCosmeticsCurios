@@ -239,20 +239,20 @@ public final class CompanionEntity extends PathfinderMob {
     public void checkDespawn() { }
 
     @Override
-    protected boolean removeWhenFarAway(double distanceToClosestPlayer) { return false; }
+    public boolean removeWhenFarAway(double distanceToClosestPlayer) { return false; }
 
     @Override
     public boolean causeFallDamage(float distance, float multiplier, DamageSource source) { return false; }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag tag) {
+    public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         if (tag.hasUUID("Owner")) entityData.set(OWNER, Optional.of(tag.getUUID("Owner")));
         entityData.set(MODEL, tag.getString("Model"));
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundTag tag) {
+    public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         UUID owner = ownerId();
         if (owner != null) tag.putUUID("Owner", owner);

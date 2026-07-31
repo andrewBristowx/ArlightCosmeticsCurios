@@ -1,5 +1,6 @@
 package com.arlight.cosmeticscurios;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
@@ -8,8 +9,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 /** Registro único de las entidades cosméticas controladas por el servidor. */
 public final class CosmeticEntities {
-    public static final DeferredRegister.Entities ENTITIES =
-            DeferredRegister.createEntities(ArlightCosmeticsCurios.MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES =
+            DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, ArlightCosmeticsCurios.MOD_ID);
 
     public static final DeferredHolder<EntityType<?>, EntityType<CompanionEntity>> COMPANION =
             ENTITIES.register("companion", () -> EntityType.Builder
