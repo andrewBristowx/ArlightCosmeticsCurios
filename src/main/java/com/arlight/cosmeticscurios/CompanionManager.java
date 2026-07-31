@@ -38,7 +38,7 @@ public final class CompanionManager {
             if (current == null) return;
             current.configure(player.getUUID(), modelId);
             current.setPos(player.getX(), player.getY(), player.getZ());
-            current.teleportNear(player);
+            if (!current.placeSafelyNear(player, "spawn")) return;
             player.level().addFreshEntity(current);
         } else if (!modelId.equals(current.modelId())) {
             current.configure(player.getUUID(), modelId);

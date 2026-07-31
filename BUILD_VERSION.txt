@@ -1,1 +1,1 @@
-ArlightCosmeticsCurios 1.14.0 SERVER-ENTITY-PETS-TREX-FACE
+ArlightCosmeticsCurios 1.14.1 SAFE-PHYSICS-AND-RESCUE

@@ -1,0 +1,13 @@
+ArlightCosmeticsCurios 1.14.1 - FISICA SEGURA DE MASCOTAS
+
+- Cada mascota usa una caja física acorde con el volumen de su modelo.
+- La gravedad y la colisión con bloques permanecen activas; jugadores y entidades siguen sin empujarlas.
+- El objetivo detrás del dueño se basa en su movimiento real y ya no cambia al mover solamente la cámara.
+- La navegación se recalcula cada 10 ticks en vez de forzarse en cada tick.
+- El seguimiento tiene histéresis para evitar arrancar y detenerse repetidamente cerca del dueño.
+- Un atasco requiere 8 segundos sin avance real antes de activar el rescate.
+- El rescate por distancia sólo se activa a más de 20 bloques y tiene 10 segundos de cooldown.
+- Antes de recolocar se comprueban chunk cargado, borde, suelo sólido, caja completa libre y ausencia de líquidos.
+- Si no existe una posición segura, la mascota se oculta y reintenta; nunca se coloca dentro de un bloque.
+- El registro del servidor indica spawn, distancia, ruta atascada o ruta no disponible como motivo.
+- Conserva los ojos corregidos del T-Rex y la cobertura completa de pijamas de 1.14.0/1.13.1.

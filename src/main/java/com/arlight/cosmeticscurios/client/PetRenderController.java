@@ -31,7 +31,7 @@ public final class PetRenderController {
         State state = STATES.computeIfAbsent(player.getUUID(), ignored -> new State());
         state.lastSeen = clock;
         CompanionEntity companion = findCompanion(player, modelId, state);
-        if (companion == null) {
+        if (companion == null || companion.isInvisible()) {
             state.appearanceScale = 0.0F;
             if ((clock & 127L) == 0L) cleanup();
             return new Transform(0.0F, 0.0F, 0.0F, 0.0F,

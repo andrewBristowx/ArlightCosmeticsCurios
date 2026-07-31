@@ -14,9 +14,11 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
@@ -49,14 +51,34 @@ public final class CompanionEntity extends PathfinderMob {
     private static final EntityDataAccessor<Integer> MOTION =
             SynchedEntityData.defineId(CompanionEntity.class, EntityDataSerializers.INT);
 
-    private int stuckTicks;
-    private double lastDistanceSq = Double.MAX_VALUE;
+    private static final double START_FOLLOWING_SQ = 10.24D;
+    private static final double STOP_FOLLOWING_SQ = 5.29D;
+    private static final double HARD_RESCUE_DISTANCE_SQ = 400.0D;
+    private static final int REPATH_INTERVAL_TICKS = 10;
+    private static final int PROGRESS_SAMPLE_TICKS = 10;
+    private static final int STUCK_RESCUE_TICKS = 160;
+    private static final int RESCUE_COOLDOWN_TICKS = 200;
+    private static final int HIDDEN_RETRY_TICKS = 20;
+
+    private CompanionPhysicsProfile physicsProfile = CompanionPhysicsProfile.forModel("");
+    private Vec3 lastOwnerPosition;
+    private Vec3 followDirection = new Vec3(0.0D, 0.0D, 1.0D);
+    private Vec3 progressSamplePosition;
+    private int stalledTicks;
+    private int repathTicks;
+    private int rescueCooldownTicks;
+    private int hiddenRetryTicks;
+    private boolean following;
+    private boolean routeRequested;
+    private boolean pendingRescue;
 
     public CompanionEntity(EntityType<? extends CompanionEntity> type, Level level) {
         super(type, level);
         setInvulnerable(true);
         setSilent(true);
         setPersistenceRequired();
+        noPhysics = false;
+        setNoGravity(false);
         xpReward = 0;
     }
 
@@ -64,7 +86,8 @@ public final class CompanionEntity extends PathfinderMob {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 1.0D)
                 .add(Attributes.MOVEMENT_SPEED, 0.34D)
-                .add(Attributes.FOLLOW_RANGE, 32.0D);
+                .add(Attributes.FOLLOW_RANGE, 32.0D)
+                .add(Attributes.STEP_HEIGHT, 1.0D);
     }
 
     @Override
@@ -83,6 +106,8 @@ public final class CompanionEntity extends PathfinderMob {
     public void configure(UUID owner, String modelId) {
         entityData.set(OWNER, Optional.ofNullable(owner));
         entityData.set(MODEL, modelId == null ? "" : modelId);
+        physicsProfile = CompanionPhysicsProfile.forModel(modelId);
+        refreshDimensions();
     }
 
     public UUID ownerId() {
@@ -98,6 +123,12 @@ public final class CompanionEntity extends PathfinderMob {
     }
 
     @Override
+    public EntityDimensions getDimensions(Pose pose) {
+        CompanionPhysicsProfile profile = physicsProfile;
+        return (profile == null ? CompanionPhysicsProfile.forModel("") : profile).dimensions();
+    }
+
+    @Override
     public void tick() {
         super.tick();
         clearFire();
@@ -110,21 +141,37 @@ public final class CompanionEntity extends PathfinderMob {
             return;
         }
 
+        updateOwnerDirection(owner);
+        if (rescueCooldownTicks > 0) rescueCooldownTicks--;
+
+        if (pendingRescue) {
+            tickPendingRescue(owner);
+            return;
+        }
+
         double distanceSq = distanceToSqr(owner);
-        if (distanceSq > 144.0D) {
-            teleportNear(owner);
+        if (distanceSq > HARD_RESCUE_DISTANCE_SQ && rescueCooldownTicks <= 0) {
+            requestRescue(owner, "distance");
             setMotion(MOTION_IDLE);
             return;
         }
 
         Vec3 target = followTarget(owner);
         double targetDistanceSq = distanceToSqr(target);
-        if (targetDistanceSq > 8.0D) {
+        if (!following && targetDistanceSq > START_FOLLOWING_SQ) following = true;
+        else if (following && targetDistanceSq < STOP_FOLLOWING_SQ) following = false;
+
+        if (following) {
             double speed = owner.isSprinting() || distanceSq > 49.0D ? 1.42D : 1.12D;
-            getNavigation().moveTo(target.x, target.y, target.z, speed);
+            if (repathTicks-- <= 0 || getNavigation().isDone()) {
+                routeRequested = getNavigation().moveTo(target.x, target.y, target.z, speed);
+                repathTicks = REPATH_INTERVAL_TICKS;
+            }
             setMotion(speed > 1.2D ? MOTION_RUN : MOTION_WALK);
         } else {
             getNavigation().stop();
+            routeRequested = false;
+            repathTicks = 0;
             setDeltaMovement(getDeltaMovement().multiply(0.55D, 1.0D, 0.55D));
             setMotion(idleMotion());
         }
@@ -132,13 +179,7 @@ public final class CompanionEntity extends PathfinderMob {
         if (!onGround() && getDeltaMovement().y > 0.015D) setMotion(MOTION_JUMP);
         if (isInWater()) setMotion(MOTION_SWIM);
 
-        if (distanceSq > 16.0D && distanceSq >= lastDistanceSq - 0.025D) stuckTicks++;
-        else stuckTicks = Math.max(0, stuckTicks - 2);
-        lastDistanceSq = distanceSq;
-        if (stuckTicks > 60) {
-            teleportNear(owner);
-            stuckTicks = 0;
-        }
+        sampleProgress(owner, targetDistanceSq);
     }
 
     private ServerPlayer resolveOwner() {
@@ -149,22 +190,35 @@ public final class CompanionEntity extends PathfinderMob {
         return owner != null && owner.level() == level() ? owner : null;
     }
 
+    private void updateOwnerDirection(ServerPlayer owner) {
+        Vec3 current = owner.position();
+        if (lastOwnerPosition == null) {
+            float yaw = owner.getYRot() * Mth.DEG_TO_RAD;
+            followDirection = new Vec3(-Mth.sin(yaw), 0.0D, Mth.cos(yaw));
+        } else {
+            Vec3 movement = current.subtract(lastOwnerPosition);
+            Vec3 horizontal = new Vec3(movement.x, 0.0D, movement.z);
+            if (horizontal.lengthSqr() > 0.0025D) followDirection = horizontal.normalize();
+        }
+        lastOwnerPosition = current;
+    }
+
     private Vec3 followTarget(ServerPlayer owner) {
-        Vec3 look = owner.getLookAngle();
-        Vec3 horizontal = new Vec3(look.x, 0.0D, look.z);
+        Vec3 horizontal = followDirection;
         if (horizontal.lengthSqr() < 0.001D) horizontal = new Vec3(0.0D, 0.0D, 1.0D);
-        horizontal = horizontal.normalize();
         double side = (owner.getUUID().hashCode() & 1) == 0 ? 1.0D : -1.0D;
         Vec3 lateral = new Vec3(-horizontal.z * side, 0.0D, horizontal.x * side);
         return owner.position().subtract(horizontal.scale(2.15D)).add(lateral.scale(1.05D));
     }
 
-    public boolean teleportNear(ServerPlayer owner) {
+    public boolean placeSafelyNear(ServerPlayer owner, String reason) {
         Vec3 target = followTarget(owner);
-        int[] verticalChecks = {0, 1, -1, 2, -2, 3, -3};
+        int[] verticalChecks = {0, 1, -1, 2, -2, 3, -3, 4, -4};
         double[][] horizontalChecks = {
                 {0.0D, 0.0D}, {1.0D, 0.0D}, {-1.0D, 0.0D},
-                {0.0D, 1.0D}, {0.0D, -1.0D}
+                {0.0D, 1.0D}, {0.0D, -1.0D},
+                {1.5D, 1.5D}, {-1.5D, 1.5D}, {1.5D, -1.5D}, {-1.5D, -1.5D},
+                {2.5D, 0.0D}, {-2.5D, 0.0D}, {0.0D, 2.5D}, {0.0D, -2.5D}
         };
         for (double[] horizontal : horizontalChecks) {
             for (int vertical : verticalChecks) {
@@ -177,6 +231,13 @@ public final class CompanionEntity extends PathfinderMob {
                 teleportTo(x, y, z);
                 setYRot(owner.getYRot());
                 setYHeadRot(owner.getYRot());
+                setInvisible(false);
+                pendingRescue = false;
+                rescueCooldownTicks = RESCUE_COOLDOWN_TICKS;
+                resetProgressTracking();
+                ArlightCosmeticsCurios.LOGGER.info(
+                        "Mascota {} de {} recolocada de forma segura: {}",
+                        modelId(), owner.getGameProfile().getName(), reason);
                 return true;
             }
         }
@@ -184,11 +245,69 @@ public final class CompanionEntity extends PathfinderMob {
     }
 
     private boolean safeAt(double x, double y, double z) {
+        if (!(level() instanceof ServerLevel serverLevel)) return false;
         BlockPos feet = BlockPos.containing(x, y, z);
         BlockPos support = feet.below();
+        if (!serverLevel.hasChunkAt(feet) || !serverLevel.getWorldBorder().isWithinBounds(feet)) return false;
         if (!level().getBlockState(support).isFaceSturdy(level(), support, Direction.UP)) return false;
         AABB moved = getBoundingBox().move(x - getX(), y - getY(), z - getZ());
-        return level().noCollision(this, moved) && level().getFluidState(feet).isEmpty();
+        BlockPos top = BlockPos.containing(x, y + physicsProfile.height() - 0.01D, z);
+        return level().noCollision(this, moved)
+                && level().getFluidState(feet).isEmpty()
+                && level().getFluidState(top).isEmpty();
+    }
+
+    private void sampleProgress(ServerPlayer owner, double targetDistanceSq) {
+        if (tickCount % PROGRESS_SAMPLE_TICKS != 0) return;
+        if (!following || targetDistanceSq <= START_FOLLOWING_SQ) {
+            resetProgressTracking();
+            return;
+        }
+
+        Vec3 current = position();
+        if (progressSamplePosition == null) {
+            progressSamplePosition = current;
+            stalledTicks = 0;
+            return;
+        }
+
+        double movedSq = current.distanceToSqr(progressSamplePosition);
+        progressSamplePosition = current;
+        if (movedSq >= 0.0064D) stalledTicks = 0;
+        else stalledTicks += PROGRESS_SAMPLE_TICKS;
+
+        if (stalledTicks >= STUCK_RESCUE_TICKS && rescueCooldownTicks <= 0) {
+            requestRescue(owner, routeRequested ? "stuck-route" : "path-unavailable");
+        }
+    }
+
+    private void requestRescue(ServerPlayer owner, String reason) {
+        if (placeSafelyNear(owner, reason)) return;
+        getNavigation().stop();
+        setDeltaMovement(Vec3.ZERO);
+        setInvisible(true);
+        pendingRescue = true;
+        hiddenRetryTicks = HIDDEN_RETRY_TICKS;
+        ArlightCosmeticsCurios.LOGGER.warn(
+                "No se encontró suelo seguro para la mascota {} de {}; se oculta y reintentará ({})",
+                modelId(), owner.getGameProfile().getName(), reason);
+    }
+
+    private void tickPendingRescue(ServerPlayer owner) {
+        getNavigation().stop();
+        setDeltaMovement(Vec3.ZERO);
+        setMotion(MOTION_IDLE);
+        if (hiddenRetryTicks-- > 0) return;
+        hiddenRetryTicks = HIDDEN_RETRY_TICKS;
+        placeSafelyNear(owner, "safe-position-retry");
+    }
+
+    private void resetProgressTracking() {
+        stalledTicks = 0;
+        progressSamplePosition = position();
+        routeRequested = false;
+        following = false;
+        repathTicks = 0;
     }
 
     private int idleMotion() {
@@ -249,6 +368,8 @@ public final class CompanionEntity extends PathfinderMob {
         super.readAdditionalSaveData(tag);
         if (tag.hasUUID("Owner")) entityData.set(OWNER, Optional.of(tag.getUUID("Owner")));
         entityData.set(MODEL, tag.getString("Model"));
+        physicsProfile = CompanionPhysicsProfile.forModel(modelId());
+        refreshDimensions();
     }
 
     @Override

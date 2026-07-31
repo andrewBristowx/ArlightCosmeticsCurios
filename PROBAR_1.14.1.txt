@@ -1,0 +1,13 @@
+PRUEBAS ARLIGHTCOSMETICSCURIOS 1.14.1
+
+1. Sustituir 1.14.0 por 1.14.1 en servidor y clientes; reiniciar completamente y no usar /reload.
+2. Probar el T-Rex y al menos una mascota pequeña en suelo plano, escaleras, losas y pasillos de dos bloques.
+3. Caminar junto a paredes y esquinas: cuerpo, hocico y cola no deben cruzar bloques sólidos.
+4. Quedarse quieto y girar la cámara durante 15 segundos: la mascota no debe cambiar de lado ni teletransportarse.
+5. Caminar y correr: debe iniciar seguimiento cerca de 3,2 bloques y detenerse cerca de 2,3 bloques sin vibrar.
+6. Bloquear deliberadamente una ruta: debe intentar rodearla y sólo rescatarse tras unos 8 segundos sin avance.
+7. Alejarse más de 20 bloques: debe aparecer en un lugar seguro una vez, sin bucle de teletransportes.
+8. Probar borde, agua, lava, huecos, puertas y espacios estrechos; nunca debe aparecer dentro de bloques o líquidos.
+9. Revisar latest.log: cada recolocación debe indicar un único motivo (spawn, distance, stuck-route o path-unavailable).
+10. Confirmar que no recibe daño, no se empuja, no activa mecanismos y desaparece al desequiparla o entrar en espectador.
+11. Volver a revisar el T-Rex de frente y ambos pijamas para confirmar que no hubo regresiones visuales.

@@ -31,15 +31,19 @@ jobs:
       - name: Configurar Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Verificar fuente 1.14.0
+      - name: Verificar fuente 1.14.1
         shell: bash
         run: |
           set -euo pipefail
-          grep -q 'version = "1.14.0"' build.gradle
-          grep -q '^ArlightCosmeticsCurios 1.14.0 ' BUILD_VERSION.txt
+          grep -q 'version = "1.14.1"' build.gradle
+          grep -q '^ArlightCosmeticsCurios 1.14.1 ' BUILD_VERSION.txt
+          grep -q '^ArlightCosmeticsCurios 1.14.1 ' SOURCE_VERSION.txt
           grep -Fq 'version = "${version}"' src/main/resources/META-INF/neoforge.mods.toml
           grep -q 'class CompanionEntity' src/main/java/com/arlight/cosmeticscurios/CompanionEntity.java
           grep -q 'class CompanionManager' src/main/java/com/arlight/cosmeticscurios/CompanionManager.java
+          grep -q 'record CompanionPhysicsProfile' src/main/java/com/arlight/cosmeticscurios/CompanionPhysicsProfile.java
+          grep -q 'STUCK_RESCUE_TICKS = 160' src/main/java/com/arlight/cosmeticscurios/CompanionEntity.java
+          grep -q 'HARD_RESCUE_DISTANCE_SQ = 400.0D' src/main/java/com/arlight/cosmeticscurios/CompanionEntity.java
           grep -q 'trex_snout_gem_left' src/main/java/com/arlight/cosmeticscurios/client/ProfessionalCosmeticModels.java
 
       - name: Compilar con Gradle
@@ -56,16 +60,17 @@ jobs:
           mkdir -p dist
           find build/libs -maxdepth 1 -type f -name '*.jar' ! -name '*-sources.jar' ! -name '*-javadoc.jar' -exec cp {} dist/ \;
           test -n "$(find dist -maxdepth 1 -type f -name '*.jar' -print -quit)"
-          unzip -p dist/ArlightCosmeticsCurios-1.14.0.jar META-INF/neoforge.mods.toml | grep -Eq 'version *= *"1.14.0"'
-          unzip -l dist/ArlightCosmeticsCurios-1.14.0.jar | grep -q 'PajamaRenderVisibility.class'
-          unzip -l dist/ArlightCosmeticsCurios-1.14.0.jar | grep -q 'CompanionEntity.class'
-          unzip -l dist/ArlightCosmeticsCurios-1.14.0.jar | grep -q 'CompanionManager.class'
+          unzip -p dist/ArlightCosmeticsCurios-1.14.1.jar META-INF/neoforge.mods.toml | grep -Eq 'version *= *"1.14.1"'
+          unzip -l dist/ArlightCosmeticsCurios-1.14.1.jar | grep -q 'PajamaRenderVisibility.class'
+          unzip -l dist/ArlightCosmeticsCurios-1.14.1.jar | grep -q 'CompanionEntity.class'
+          unzip -l dist/ArlightCosmeticsCurios-1.14.1.jar | grep -q 'CompanionManager.class'
+          unzip -l dist/ArlightCosmeticsCurios-1.14.1.jar | grep -q 'CompanionPhysicsProfile.class'
           ls -lh dist
 
       - name: Subir JAR compilado
         uses: actions/upload-artifact@v4
         with:
-          name: ArlightCosmeticsCurios-1.14.0-JAR
+          name: ArlightCosmeticsCurios-1.14.1-JAR
           path: dist/*.jar
           if-no-files-found: error
           retention-days: 30
