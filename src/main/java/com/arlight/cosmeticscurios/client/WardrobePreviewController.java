@@ -88,6 +88,43 @@ public final class WardrobePreviewController {
                 })));
     }
 
+
+    /** Indica si el cosmético seleccionado usa la ranura de mascota. */
+    public static boolean isCompanion(String cosmeticId) {
+        CosmeticItemCatalog.Definition definition = CosmeticItemCatalog.byId(cosmeticId);
+        return definition != null && definition.companion();
+    }
+
+    /** Devuelve X/Y/Z adicionales usados en preview y en el mundo. */
+    public static float[] position(String cosmeticId) {
+        CosmeticItemCatalog.Definition definition = CosmeticItemCatalog.byId(cosmeticId);
+        if (definition == null || !definition.companion()) return new float[]{0.0F, 0.0F, 0.0F};
+        PetPositionSettings.Offset offset = PetPositionSettings.get(definition.modelId());
+        return new float[]{offset.x(), offset.y(), offset.z()};
+    }
+
+    /** Ajuste incremental seguro de la mascota seleccionada. */
+    public static float[] adjustPosition(String cosmeticId, float dx, float dy, float dz) {
+        CosmeticItemCatalog.Definition definition = CosmeticItemCatalog.byId(cosmeticId);
+        if (definition == null || !definition.companion()) return new float[]{0.0F, 0.0F, 0.0F};
+        PetPositionSettings.Offset offset = PetPositionSettings.adjust(definition.modelId(), dx, dy, dz);
+        PetRenderController.clear();
+        return new float[]{offset.x(), offset.y(), offset.z()};
+    }
+
+    public static float[] resetPosition(String cosmeticId) {
+        CosmeticItemCatalog.Definition definition = CosmeticItemCatalog.byId(cosmeticId);
+        if (definition == null || !definition.companion()) return new float[]{0.0F, 0.0F, 0.0F};
+        PetPositionSettings.Offset offset = PetPositionSettings.reset(definition.modelId());
+        PetPositionSettings.save();
+        PetRenderController.clear();
+        return new float[]{offset.x(), offset.y(), offset.z()};
+    }
+
+    public static void savePositions() {
+        PetPositionSettings.save();
+    }
+
     public static boolean isActive() {
         return active;
     }

@@ -1,0 +1,10 @@
+PRUEBAS ARLIGHTCOSMETICSCURIOS 1.12.0
+
+1. Sustituir 1.11.1 por 1.12.0 en cliente y servidor.
+2. Reiniciar completamente; no usar /reload.
+3. Revisar cada mascota desde frente, lado y espalda.
+4. Confirmar que Abejita y Gallinita siguen idénticas a la versión aprobada.
+5. Abrir el editor de posición desde el ropero y mover X/Y/Z.
+6. Cerrar y volver a abrir Minecraft: comprobar persistencia del archivo de configuración.
+7. Probar caminar, correr, saltar, nadar, volar y cambiar de dimensión.
+8. Revisar pijamas con skins slim y clásicas, con segunda capa activada.

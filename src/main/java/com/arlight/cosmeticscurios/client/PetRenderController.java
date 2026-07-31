@@ -71,12 +71,13 @@ public final class PetRenderController {
         // La versión anterior usaba 0.16 bloques y las mascotas parecían pegadas
         // a la pierna. Los perfiles actuales conservan un pasillo visible entre
         // el jugador y la criatura, y retrasan más a las mascotas grandes.
-        float targetX = preferredSide * profile.sideDistance()
+        PetPositionSettings.Offset custom = PetPositionSettings.get(modelId);
+        float targetX = preferredSide * profile.sideDistance() + custom.x()
                 - Mth.clamp(localSide * 1.25F, -0.16F, 0.16F);
-        float targetZ = profile.backDistance()
+        float targetZ = profile.backDistance() + custom.z()
                 + Mth.clamp(-localForward * 1.8F, -0.08F,
                 motion == Motion.RUN ? 0.30F : 0.20F);
-        float targetY = profile.baseYOffset();
+        float targetY = profile.baseYOffset() + custom.y();
 
         if (motion == Motion.SWIM) {
             targetY = profile.floating() ? -0.36F : -0.22F;
@@ -111,8 +112,10 @@ public final class PetRenderController {
     /** Pose estable usada exclusivamente por el maniquí del ropero. */
     public static Transform preview(String modelId) {
         PetRenderProfile profile = PetRenderProfile.forModel(modelId);
-        return new Transform(profile.previewSide(), profile.previewYOffset(),
-                profile.previewBack(), -8.0F, profile.previewScale(),
+        PetPositionSettings.Offset custom = PetPositionSettings.get(modelId);
+        return new Transform(profile.previewSide() + custom.x(),
+                profile.previewYOffset() + custom.y(),
+                profile.previewBack() + custom.z(), -8.0F, profile.previewScale(),
                 Motion.IDLE, false);
     }
 

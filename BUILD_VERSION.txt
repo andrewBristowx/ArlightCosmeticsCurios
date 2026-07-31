@@ -1,1 +1,1 @@
-ArlightCosmeticsCurios 1.11.1 TEXTURE-ARMOR-FIT-FIX
+ArlightCosmeticsCurios 1.12.0 COSMETIC-REPAIR-PET-POSITION-EDITOR

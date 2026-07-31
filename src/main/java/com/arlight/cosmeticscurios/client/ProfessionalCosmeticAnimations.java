@@ -250,9 +250,15 @@ public final class ProfessionalCosmeticAnimations {
                 addX(model, "pet_axolotl_back_right", walk * 10.0F);
             }
             case "mobchibi_slime" -> {
-                float bounce = (Mth.sin(time * 5.0F) + 1.0F) * 0.48F;
+                boolean moving = motion == PetRenderController.Motion.WALK
+                        || motion == PetRenderController.Motion.RUN;
+                float frequency = motion == PetRenderController.Motion.RUN ? 12.0F
+                        : moving ? 8.0F : 4.0F;
+                float amplitude = motion == PetRenderController.Motion.RUN ? 0.82F
+                        : moving ? 0.56F : 0.22F;
+                float bounce = Math.abs(Mth.sin(time * frequency)) * amplitude;
                 moveY(model, "slime_root", -bounce);
-                addY(model, "slime_core", time * 24.0F);
+                addY(model, "slime_core", time * (moving ? 42.0F : 20.0F));
             }
             case "mobchibi_warden" -> {
                 moveY(model, "warden_root", Mth.sin(time * 3.2F) * 0.15F);

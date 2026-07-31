@@ -1,0 +1,18 @@
+ArlightCosmeticsCurios 1.12.0 - COSMETIC REPAIR + PET POSITION EDITOR
+
+- Reconstruye las texturas solicitadas sin tocar Mini Abejita ni Mini Gallinita.
+- T-Rex: paleta verde coherente y ojos separados del UV de placas/brazos.
+- Creeper: cara clásica de Minecraft sin cejas añadidas.
+- Enderman: cuerpo uniforme con el mismo tono oscuro del torso.
+- Ajolote: cara rosita clara y branquias celestes.
+- Slime: verde claro uniforme y rebote más fuerte al caminar/correr.
+- Warden: ojos y boca visibles.
+- Zorrito: hocico, pecho y punta de cola claros; patas oscuras.
+- Ranita: atlas UV completamente pintado para evitar textura negra/ausente.
+- Allay: modelo y paleta rehechos, alas más grandes, brazos azules y rostro legible.
+- Zombie: brazos corregidos al frente y colores vanilla (piel verde, camiseta cian, pantalón azul).
+- Esqueleto: atlas UV completo, cuencas y boca visibles.
+- Pijamas dinosaurio/ajolote: malla más externa tipo armadura, atlas opaco y sin línea frontal.
+- Capucha conejita: paleta rosa más coherente y mejor separación de la skin.
+- Nuevo archivo local config/arlightcosmeticscurios-pet-positions.properties.
+- Ajustes X/Y/Z por mascota aplicados tanto a la previsualización como al mundo.

@@ -81,10 +81,10 @@ public final class CosmeticCurioRenderer implements ICurioRenderer {
                 // El margen por ranura evita que la skin atraviese capuchas, mangas,
                 // cintura, rodillas o zapatillas incluso con skins de segunda capa.
                 float armorScale = switch (definition.slotId()) {
-                    case "arlight_head" -> 1.026F;
-                    case "arlight_chest" -> 1.021F;
-                    case "arlight_legs" -> 1.020F;
-                    case "arlight_feet" -> 1.018F;
+                    case "arlight_head" -> 1.040F;
+                    case "arlight_chest" -> 1.034F;
+                    case "arlight_legs" -> 1.032F;
+                    case "arlight_feet" -> 1.030F;
                     default -> 1.012F;
                 };
                 poseStack.scale(armorScale, armorScale, armorScale);

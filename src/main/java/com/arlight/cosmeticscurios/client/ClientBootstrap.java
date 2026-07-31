@@ -10,6 +10,7 @@ public final class ClientBootstrap {
     private static void setup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             ClientCosmeticSettings.load();
+            PetPositionSettings.load();
             CosmeticItems.all().forEach(item ->
                     CuriosRendererRegistry.register(item, () -> new CosmeticCurioRenderer()));
         });
