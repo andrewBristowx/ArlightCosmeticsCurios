@@ -1,0 +1,22 @@
+ArlightCosmeticsCurios 1.13.0 — LIVING PETS + PAJAMA FIT
+
+Mascotas
+- Mantienen una posición propia en coordenadas del mundo en vez de estar pegadas al jugador.
+- Buscan suelo seguro y espacio libre antes de moverse.
+- Rodean obstáculos sencillos probando rutas laterales.
+- Suben escalones y evitan caídas grandes o líquidos.
+- Se recuperan en el hombro al volar, nadar, quedar encerradas o atascarse.
+- Añaden estados de mirar, sentarse, saltar y descansar.
+- Conservan el ajuste manual de posición del ropero.
+
+Pijamas
+- Siguen siendo cosméticos Curios; no son skins ni armaduras reales.
+- Ocultan temporalmente las partes de skin cubiertas mientras se renderizan.
+- Mantienen visible la cara dentro de la capucha.
+- Restauran el PlayerModel inmediatamente después de cada render.
+- Se ven encima de la armadura equipada sin quitar defensa ni encantamientos.
+- Conservan compatibilidad con brazos Steve y Alex y las piezas animadas actuales.
+
+Conservado
+- Ojos físicos y reflejos del Mini T-Rex de la versión 1.12.1.
+- Texturas, catálogo, propiedad de objetos y ranuras Curios existentes.

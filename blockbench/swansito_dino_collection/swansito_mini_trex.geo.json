@@ -156,6 +156,58 @@
           ]
         },
         {
+          "name": "trex_eye_left",
+          "parent": "trex_head",
+          "pivot": [-2.05, 2.95, -11.42],
+          "cubes": [
+            {
+              "origin": [-2.67, 2.33, -11.64],
+              "size": [1.24, 1.24, 0.44],
+              "uv": [112, 64],
+              "inflate": 0.015
+            }
+          ]
+        },
+        {
+          "name": "trex_eye_right",
+          "parent": "trex_head",
+          "pivot": [2.05, 2.95, -11.42],
+          "cubes": [
+            {
+              "origin": [1.43, 2.33, -11.64],
+              "size": [1.24, 1.24, 0.44],
+              "uv": [112, 64],
+              "inflate": 0.015
+            }
+          ]
+        },
+        {
+          "name": "trex_eye_glint_left",
+          "parent": "trex_head",
+          "pivot": [-2.26, 2.70, -11.69],
+          "cubes": [
+            {
+              "origin": [-2.42, 2.54, -11.77],
+              "size": [0.32, 0.32, 0.16],
+              "uv": [64, 64],
+              "inflate": 0.005
+            }
+          ]
+        },
+        {
+          "name": "trex_eye_glint_right",
+          "parent": "trex_head",
+          "pivot": [1.84, 2.70, -11.69],
+          "cubes": [
+            {
+              "origin": [1.68, 2.54, -11.77],
+              "size": [0.32, 0.32, 0.16],
+              "uv": [64, 64],
+              "inflate": 0.005
+            }
+          ]
+        },
+        {
           "name": "trex_leg_left",
           "parent": "trex_body",
           "pivot": [

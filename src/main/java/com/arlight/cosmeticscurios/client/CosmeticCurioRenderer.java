@@ -96,6 +96,9 @@ public final class CosmeticCurioRenderer implements ICurioRenderer {
 
     private static boolean shouldHideForArmor(AbstractClientPlayer player,
                                               CosmeticItemCatalog.Definition definition) {
+        // Los pijamas son una apariencia completa: deben seguir visibles encima
+        // de la armadura para que ésta conserve estadísticas sin reemplazar el look.
+        if ("pajamas".equals(definition.category())) return false;
         if (!ClientCosmeticSettings.hideUnderArmor()) return false;
         if (!"hide_matching".equals(definition.armorPolicy())) return false;
         EquipmentSlot slot = switch (definition.slotId()) {

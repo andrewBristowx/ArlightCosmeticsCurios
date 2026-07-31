@@ -460,6 +460,10 @@ public final class ProfessionalCosmeticAnimations {
                 if (!simplified) moveY(model, root, Math.abs(Mth.sin(time * 16.0F)) * -0.10F);
             }
             case WALK -> addX(model, root, 1.5F);
+            case JUMP -> {
+                addX(model, root, -5.0F);
+                if (!simplified) moveY(model, root, -0.22F - Math.abs(Mth.sin(time * 7.0F)) * 0.12F);
+            }
             case SWIM -> {
                 addX(model, root, -13.0F);
                 addY(model, root, Mth.sin(time * 4.0F) * 5.0F);
@@ -469,6 +473,18 @@ public final class ProfessionalCosmeticAnimations {
                 addX(model, root, -8.0F);
                 addZ(model, root, Mth.sin(time * 3.2F) * 3.0F);
                 if (!simplified) moveY(model, root, Mth.sin(time * 4.5F) * 0.16F);
+            }
+            case LOOK -> {
+                addY(model, root, Mth.sin(time * 0.9F) * 7.0F);
+                if (!simplified) addZ(model, root, Mth.sin(time * 1.8F) * 2.5F);
+            }
+            case SIT -> {
+                moveY(model, root, 0.18F);
+                addX(model, root, 7.0F);
+            }
+            case SHOULDER -> {
+                moveY(model, root, -0.03F + Mth.sin(time * 2.4F) * 0.035F);
+                addY(model, root, Mth.sin(time * 1.3F) * 4.0F);
             }
             case IDLE -> {
                 if (!simplified) addY(model, root, Mth.sin(time * 1.2F) * 1.5F);

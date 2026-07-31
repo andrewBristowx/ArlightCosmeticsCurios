@@ -1,0 +1,12 @@
+PRUEBA EN CLIENTE/SERVIDOR ARCLIGHT 1.21.1
+
+1. Sustituir 1.12.1 por 1.13.0 en servidor y clientes; no dejar JAR duplicados.
+2. Probar mascota en suelo plano, escaleras, puerta, esquina, borde y agua.
+3. Correr y comprobar que sigue sin atravesar paredes.
+4. Nadar o usar élitros y comprobar la recuperación al hombro.
+5. Quedarse quieto al menos 15 segundos y revisar mirar/sentarse/descansar.
+6. Probar pijama dinosaurio y ajolote con skin Steve y Alex.
+7. Revisar caminar, correr, agacharse, nadar y volar con el pijama.
+8. Equipar armadura con protección y confirmar que los atributos se conservan.
+9. Abrir /ropero y comprobar preview y ajuste manual de posición.
+10. Confirmar que el Mini T-Rex conserva ojos y reflejos.
