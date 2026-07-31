@@ -38,23 +38,20 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Aplicar parche ArlightCosmeticsCurios 1.11.1
+      - name: Importar actualización ArlightCosmeticsCurios 1.12.0
         shell: bash
         run: |
           set -euo pipefail
-          PATCH_DIR='.github/patches/curios-1.11.1'
-          test -f "$PATCH_DIR/changes.patch"
-          git apply --check "$PATCH_DIR/changes.patch"
-          git apply "$PATCH_DIR/changes.patch"
-          TARGET='src/main/resources/assets/arlightcosmeticscurios/textures/cosmetics'
-          mkdir -p "$TARGET"
-          cp "$PATCH_DIR"/mobchibi_*.png "$TARGET/"
-          rm -rf "$PATCH_DIR"
+          FILE_ID='14WJaycJCD1FR1WeRVlQoEGHF5Qzscpkn'
+          curl -L --fail --retry 3 "https://drive.usercontent.google.com/download?id=${FILE_ID}&export=download&confirm=t" -o /tmp/overlay.zip
+          unzip -t /tmp/overlay.zip
+          unzip -oq /tmp/overlay.zip -d .
+          rm -rf .github/patches/curios-1.12.0
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
           if ! git diff --cached --quiet; then
-            git commit -m 'Actualizar ArlightCosmeticsCurios a 1.11.1 - Texture Armor Fit Fix'
+            git commit -m 'Actualizar ArlightCosmeticsCurios a 1.12.0 - Cosmetic Repair Pet Position Editor'
             git push origin HEAD:main
           fi
 
@@ -80,7 +77,7 @@ jobs:
       - name: Subir JAR compilado
         uses: actions/upload-artifact@v4
         with:
-          name: ArlightCosmeticsCurios-1.11.1-JAR
+          name: ArlightCosmeticsCurios-1.12.0-JAR
           path: dist/*.jar
           if-no-files-found: error
           retention-days: 30
