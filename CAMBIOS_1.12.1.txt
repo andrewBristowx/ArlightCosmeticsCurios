@@ -1,0 +1,5 @@
+ArlightCosmeticsCurios 1.12.1 - MINI T-REX EYES FIX
+
+- Sustituye los ojos casi invisibles del Mini T-Rex por ojos grandes y separados del hocico.
+- Añade un brillo claro pequeño para que la mirada siga siendo legible con poca luz.
+- Conserva las posiciones, animaciones y ajustes X/Y/Z de mascotas de la versión 1.12.0.
