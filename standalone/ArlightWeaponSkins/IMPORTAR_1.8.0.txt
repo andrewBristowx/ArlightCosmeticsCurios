@@ -1,0 +1,4 @@
+ArlightWeaponSkins 1.8.0
+Fuente canónica temporal: Google Drive id 1h0MRxZFxvBjL7wNVPZfXoCJAUNinEKho
+SHA-256: 6593362af9417a4602374f6cad7afe8093b1dad5137f34fdd3ca87de342b139a
+El workflow del PR descarga, valida, publica la fuente y compila la entrega.
