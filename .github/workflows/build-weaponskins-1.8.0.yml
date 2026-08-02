@@ -26,7 +26,7 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m pip install --quiet gdown
-          gdown --id 1h0MRxZFxvBjL7wNVPZfXoCJAUNinEKho -O /tmp/ArlightWeaponSkins-1.8.0-SOURCE.zip
+          gdown 1h0MRxZFxvBjL7wNVPZfXoCJAUNinEKho -O /tmp/ArlightWeaponSkins-1.8.0-SOURCE.zip
           echo '6593362af9417a4602374f6cad7afe8093b1dad5137f34fdd3ca87de342b139a  /tmp/ArlightWeaponSkins-1.8.0-SOURCE.zip' | sha256sum -c -
           rm -rf /tmp/weaponskins-source
           mkdir -p /tmp/weaponskins-source
