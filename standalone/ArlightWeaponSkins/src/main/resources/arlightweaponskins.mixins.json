@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.arlight.weaponskins.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ItemInHandLayerMixin",
+    "ItemInHandRendererMixin",
+    "ItemRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

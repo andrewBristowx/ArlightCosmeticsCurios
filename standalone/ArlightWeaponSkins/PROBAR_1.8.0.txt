@@ -1,0 +1,23 @@
+PRUEBA ARLIGHTWEAPONSKINS 1.8.0
+
+CLIENTE mods/
+- ArlightWeaponSkins-1.8.0.jar
+- ArlightChatClient-5.3.0-WEAPON-SKINS-FIX.jar
+- ArlightCosmeticsCurios-1.17.0-WEAPON-SLOTS.jar
+- GeckoLib 4.9.x
+- Curios 9.5.1+
+
+SERVIDOR mods/
+- ArlightWeaponSkins-1.8.0.jar
+- ArlightCosmeticsCurios-1.17.0-WEAPON-SLOTS.jar
+- Curios 9.5.1+
+
+Elimina versiones duplicadas. Cierra Minecraft y detén completamente el servidor antes de reemplazar archivos.
+
+Al entrar, client/logs/latest.log debe contener:
+- Arlight Weapon Skins 1.8.0 activo
+- Renderer GeckoLib registrado explícitamente para 12 objetos visuales
+
+Equipa una skin Somita o Pony en la ranura Curios correspondiente y sostén la herramienta real.
+El log debe confirmar hook, Curios activo, sustitución activa y cuatro recursos confirmados.
+Prueba inventario, primera persona y tercera persona.

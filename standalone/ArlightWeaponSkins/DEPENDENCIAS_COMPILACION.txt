@@ -1,0 +1,4 @@
+Compilar con:
+- ArlightChatClient-5.3.0-WEAPON-SKINS-FIX.jar
+- ArlightCosmeticsCurios-1.17.0-WEAPON-SLOTS.jar
+Los binarios exactos se incluyen en el artefacto de entrega y no se versionan dentro del repositorio.

@@ -1,1 +1,0 @@
-Reintento de compilación después de corregir la sintaxis de gdown.

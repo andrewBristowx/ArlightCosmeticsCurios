@@ -1,0 +1,44 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.gradle.userdev' version '7.1.38'
+}
+
+version = '1.8.0'
+group = 'com.arlight.weaponskins'
+base { archivesName = 'ArlightWeaponSkins' }
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'GeckoLib'
+        url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+        content { includeGroup 'software.bernie.geckolib' }
+    }
+}
+
+dependencies {
+    implementation 'net.neoforged:neoforge:21.1.235'
+    implementation "software.bernie.geckolib:geckolib-neoforge-1.21.1:${geckolib_version}"
+    compileOnly files('libs/ArlightChatClient-5.3.0-WEAPON-SKINS-FIX.jar')
+    compileOnly files('libs/ArlightCosmeticsCurios-1.17.0-WEAPON-SLOTS.jar')
+}
+
+runs {
+    configureEach {
+        systemProperty 'forge.logging.console.level', 'debug'
+        modSource sourceSets.main
+    }
+    client { client() }
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.withType(ProcessResources).configureEach {
+    inputs.property 'version', project.version
+    filesMatching('META-INF/neoforge.mods.toml') { expand version: project.version }
+}
+
+jar {
+    manifest { attributes 'MixinConfigs': 'arlightweaponskins.mixins.json' }
+}
