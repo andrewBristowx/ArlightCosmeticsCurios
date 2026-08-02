@@ -27,12 +27,13 @@ jobs:
           set -euo pipefail
           python3 -m pip install --quiet gdown
           gdown 1h0MRxZFxvBjL7wNVPZfXoCJAUNinEKho -O /tmp/ArlightWeaponSkins-1.8.0-SOURCE.zip
-          echo '6593362af9417a4602374f6cad7afe8093b1dad5137f34fdd3ca87de342b139a  /tmp/ArlightWeaponSkins-1.8.0-SOURCE.zip' | sha256sum -c -
+          echo '8da3c659d85b110b03e81d8869db86bbb43f57dda1d5adfca026548b33af5daa  /tmp/ArlightWeaponSkins-1.8.0-SOURCE.zip' | sha256sum -c -
           rm -rf /tmp/weaponskins-source
           mkdir -p /tmp/weaponskins-source
           unzip -q /tmp/ArlightWeaponSkins-1.8.0-SOURCE.zip -d /tmp/weaponskins-source
           test -f /tmp/weaponskins-source/ArlightWeaponSkins-1.8.0-SOURCE/build.gradle
           python3 /tmp/weaponskins-source/ArlightWeaponSkins-1.8.0-SOURCE/tools/validate_1_8_0.py
+          grep -q "maven.modrinth:vvuO3ImH:yohfFbgD" /tmp/weaponskins-source/ArlightWeaponSkins-1.8.0-SOURCE/build.gradle
 
       - name: Publicar fuente legible en la rama
         shell: bash
@@ -43,6 +44,7 @@ jobs:
           rsync -a --delete --exclude 'libs/' --exclude '.gradle/' --exclude 'build/' "$SRC/" standalone/ArlightWeaponSkins/
           cat > standalone/ArlightWeaponSkins/DEPENDENCIAS_COMPILACION.txt <<'EOF'
           Compilar con:
+          - Curios API 9.5.1+1.21.1
           - ArlightChatClient-5.3.0-WEAPON-SKINS-FIX.jar
           - ArlightCosmeticsCurios-1.17.0-WEAPON-SLOTS.jar
           Los binarios exactos se incluyen en el artefacto de entrega y no se versionan dentro del repositorio.
@@ -51,7 +53,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add standalone/ArlightWeaponSkins
           if ! git diff --cached --quiet; then
-            git commit -m 'Añadir renderer explícito de WeaponSkins 1.8.0'
+            git commit -m 'Añadir Curios API al build de WeaponSkins 1.8.0'
             git push origin HEAD:${{ github.head_ref }}
           fi
 
@@ -61,7 +63,7 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Compilar con NeoForge y GeckoLib
+      - name: Compilar con NeoForge, Curios y GeckoLib
         shell: bash
         env:
           CI: 'true'
@@ -76,6 +78,7 @@ jobs:
           unzip -l build/libs/ArlightWeaponSkins-1.8.0.jar | grep -q 'WeaponSkinClientExtensions.class'
           unzip -l build/libs/ArlightWeaponSkins-1.8.0.jar | grep -q 'assets/arlightweaponskins/textures/item/somita_pickaxe.png'
           unzip -l build/libs/ArlightWeaponSkins-1.8.0.jar | grep -q 'assets/arlightcosmeticscurios/models/item/pony_weapon_sword.json'
+          ! unzip -l build/libs/ArlightWeaponSkins-1.8.0.jar | grep -q 'top/theillusivec4/curios/'
           ! unzip -l build/libs/ArlightWeaponSkins-1.8.0.jar | grep -q 'com/arlight/chatclient/ClientCosmeticsState.class'
 
       - name: Empaquetar instalación compatible
