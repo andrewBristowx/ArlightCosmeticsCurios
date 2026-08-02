@@ -16,6 +16,15 @@ repositories {
         url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
         content { includeGroup 'software.bernie.geckolib' }
     }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'Modrinth'
+                url = 'https://api.modrinth.com/maven'
+            }
+        }
+        filter { includeGroup 'maven.modrinth' }
+    }
 }
 
 dependencies {
@@ -23,6 +32,8 @@ dependencies {
     implementation "software.bernie.geckolib:geckolib-neoforge-1.21.1:${geckolib_version}"
     compileOnly files('libs/ArlightChatClient-5.3.0-WEAPON-SKINS-FIX.jar')
     compileOnly files('libs/ArlightCosmeticsCurios-1.17.0-WEAPON-SLOTS.jar')
+    // Curios 9.5.1 API is required because CosmeticsCurios deliberately does not shade it.
+    compileOnly 'maven.modrinth:vvuO3ImH:yohfFbgD'
 }
 
 runs {

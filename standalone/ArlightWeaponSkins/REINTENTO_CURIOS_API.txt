@@ -1,1 +1,0 @@
-Reintento después de añadir Curios API 9.5.1 al classpath de compilación.
