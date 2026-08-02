@@ -1,0 +1,93 @@
+name: Compilar ArlightWeaponSkins 1.10.0
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - agent/weaponskins-1.10.0-build-base
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    if: github.head_ref == 'candidate/weaponskins-1.10.0-vanilla-grip-stats-safe'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Preparar Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Descargar fuente verificada
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet gdown
+          gdown 1Bo89B-NqidPGIRU5YNYfgyAK_0Lszel2 -O source.zip
+          echo 'e8c51eff02f43c8ec9c9e9df57d76b7bd14c639d72cf0d8d57ab5403aec66bca  source.zip' | sha256sum -c -
+          unzip -q source.zip
+          mv ArlightWeaponSkins-1.10.0-VANILLA-GRIP-STATS-SAFE project
+          chmod +x project/gradlew
+
+      - name: Validar paquete
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f project/libs/ArlightChatClient-5.3.0-WEAPON-SKINS-FIX.jar
+          test -f project/libs/ArlightCosmeticsCurios-1.17.3-WEAPON-UNEQUIP-FIX.jar
+          test ! -f project/libs/ArlightCosmeticsCurios-1.17.0-WEAPON-SLOTS.jar
+          grep -q "version = '1.10.0'" project/build.gradle
+          grep -q "ArlightCosmeticsCurios-1.17.3-WEAPON-UNEQUIP-FIX.jar" project/build.gradle
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          p=Path('project')
+          for theme in ('somita','pony'):
+              for tool in ('sword','pickaxe','axe','shovel','hoe','bow'):
+                  for rel in (
+                      f'src/main/resources/assets/arlightweaponskins/models/item/{theme}_{tool}.json',
+                      f'src/main/resources/assets/arlightweaponskins/geo/{theme}_{tool}.geo.json',
+                      f'src/main/resources/assets/arlightweaponskins/textures/item/{theme}_{tool}.png',
+                      f'src/main/resources/assets/arlightweaponskins/animations/{theme}_{tool}.animation.json'):
+                      assert (p/rel).is_file(), rel
+          for f in p.glob('src/main/resources/**/*.json'):
+              json.loads(f.read_text())
+          print('Recursos 1.10.0 OK')
+          PY
+
+      - name: Compilar con Gradle
+        working-directory: project
+        shell: bash
+        run: ./gradlew --no-daemon clean build
+
+      - name: Verificar JAR
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR=$(find project/build/libs -maxdepth 1 -type f -name 'ArlightWeaponSkins-1.10.0*.jar' ! -name '*sources*' | head -n 1)
+          test -n "$JAR"
+          mkdir -p delivery
+          cp "$JAR" delivery/ArlightWeaponSkins-1.10.0-VANILLA-GRIP-STATS-SAFE.jar
+          unzip -p "$JAR" META-INF/neoforge.mods.toml | grep -Eq 'version[[:space:]]*=[[:space:]]*"1.10.0"'
+          jar tf "$JAR" | grep -q 'com/arlight/weaponskins/client/WeaponSkinItemRenderer.class'
+          jar tf "$JAR" | grep -q 'com/arlight/weaponskins/mixin/ItemRendererMixin.class'
+          for theme in somita pony; do
+            for tool in sword pickaxe axe shovel hoe bow; do
+              jar tf "$JAR" | grep -q "assets/arlightweaponskins/geo/${theme}_${tool}.geo.json"
+              jar tf "$JAR" | grep -q "assets/arlightweaponskins/textures/item/${theme}_${tool}.png"
+            done
+          done
+          cp source.zip delivery/ArlightWeaponSkins-1.10.0-VANILLA-GRIP-STATS-SAFE-SOURCE.zip
+          sha256sum delivery/* > delivery/ArlightWeaponSkins-1.10.0-SHA256.txt
+          sha256sum -c delivery/ArlightWeaponSkins-1.10.0-SHA256.txt
+
+      - name: Subir entrega
+        uses: actions/upload-artifact@v4
+        with:
+          name: ArlightWeaponSkins-1.10.0-DELIVERY
+          path: delivery/*
+          if-no-files-found: error
+          retention-days: 90
